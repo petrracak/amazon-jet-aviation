@@ -43,6 +43,238 @@
     "conditionsLabel": "4 condições",
     "conditionsValue": "Peças novas, overhauled, repaired e serviceable"
   },
+  "about": {
+    "title": "Sobre a Amazon Jet Aviation",
+    "text1": "A Amazon Jet Aviation nasceu na Flórida, em julho de 2025, para conectar o mercado aeronáutico brasileiro à rede de fornecedores dos Estados Unidos. Começamos a operar em agosto de 2025.",
+    "text2": "Nosso trabalho é encontrar a peça certa, comparar as opções e acompanhar a compra até a chegada ao Brasil, com segurança, transparência e atendimento especializado.",
+    "subtitle": "Uma equipe conectada aos EUA",
+    "subtext": "Somos uma equipe que mantém contato com fornecedores nos EUA. É essa conexão entre Brasil e Estados Unidos que sustenta o nosso trabalho."
+  },
+  "services": {
+    "title": "O que fazemos",
+    "intro": "Um ponto de contato para encontrar, comparar e comprar peças no mercado americano.",
+    "items": [
+      {
+        "title": "Sourcing de peças e componentes",
+        "text": "Você envia o part number. Pesquisamos a nossa rede de fornecedores, fabricantes e distribuidores, comparamos disponibilidade, condição, documentação e prazo, e levamos as opções para você em uma proposta só."
+      },
+      {
+        "title": "Peças novas, overhauled, repaired e serviceable",
+        "text": "Fornecemos componentes em diferentes condições, conforme a disponibilidade e a sua necessidade. Overhaul e reparo são feitos por organizações especializadas. A gente localiza o componente e confirma com o fornecedor a documentação disponível."
+      },
+      {
+        "title": "AOG com prioridade",
+        "text": "Aeronave parada não espera. Acionamos a rede de fornecedores para checar disponibilidade imediata, alternativas de fornecimento e possibilidade de envio expresso."
+      },
+      {
+        "title": "Logística internacional coordenada",
+        "text": "Coordenamos a compra, consolidamos pedidos quando faz sentido, cuidamos da documentação comercial e organizamos o transporte internacional com operadores logísticos e parceiros especializados."
+      },
+      {
+        "title": "Troca padrão e devolução de core",
+        "text": "Operações de standard exchange e devolução de core, negociadas conforme as condições comerciais de cada caso."
+      }
+    ],
+    "cta": "Pedir cotação"
+  },
+  "how": {
+    "title": "Como funciona, do part number ao seu hangar",
+    "steps": [
+      {
+        "title": "Você envia o pedido",
+        "text": "Pelo formulário de cotação ou pelo WhatsApp, com o part number, o modelo da aeronave, a condição desejada e a urgência."
+      },
+      {
+        "title": "A gente pesquisa a rede",
+        "text": "Consultamos fornecedores, fabricantes e distribuidores nos EUA e comparamos disponibilidade, condição, documentação e prazo."
+      },
+      {
+        "title": "Você recebe a proposta",
+        "text": "Com a condição da peça, a documentação disponível e as formas de pagamento, antes de confirmar a compra."
+      },
+      {
+        "title": "Compra e transporte",
+        "text": "Confirmada a compra, coordenamos o pedido e organizamos o transporte internacional com operadores logísticos e parceiros especializados."
+      },
+      {
+        "title": "Importação e chegada",
+        "text": "No Brasil, o desembaraço aduaneiro é feito pelo importador e pelos profissionais habilitados, conforme a modalidade contratada. Custos e impostos de importação dependem de cada operação."
+      }
+    ],
+    "deadlinesTitle": "Sobre prazos",
+    "deadlines": "Os prazos de cotação e de entrega variam conforme o part number, a condição da peça, a localização do fornecedor, a disponibilidade, a documentação necessária e o destino final. Fale com a gente para saber o prazo da sua peça."
+  },
+  "aog": {
+    "tag": "AOG",
+    "title": "Aeronave no solo? Fale com a gente agora.",
+    "text": "AOG não espera, e a gente trata assim. Seu pedido entra com prioridade e acionamos a nossa rede de fornecedores para checar disponibilidade imediata, alternativas de fornecimento e possibilidades de envio expresso.",
+    "steps": [
+      {
+        "title": "Você chama no WhatsApp",
+        "text": "Mande o modelo da aeronave, a peça necessária e o part number."
+      },
+      {
+        "title": "Acionamos a rede",
+        "text": "Verificamos disponibilidade imediata e alternativas de fornecimento."
+      },
+      {
+        "title": "Você recebe as opções",
+        "text": "Com condição da peça, documentação disponível e possibilidade de envio expresso."
+      }
+    ],
+    "cta": "Acionar AOG no WhatsApp",
+    "support": "Atendimento de segunda a sexta, das 9h às 17h (horário da Flórida)."
+  },
+  "why": {
+    "title": "Por que escolher a Amazon Jet Aviation",
+    "items": [
+      {
+        "title": "Um contato, várias fontes",
+        "text": "Você fala com um time só. A gente pesquisa fornecedores, fabricantes e distribuidores e compara tudo por você."
+      },
+      {
+        "title": "Sem limite de catálogo",
+        "text": "Não dependemos de estoque próprio. Buscamos o componente onde ele está, para diferentes aeronaves e necessidades."
+      },
+      {
+        "title": "AOG com prioridade",
+        "text": "Pedidos de aeronave no solo passam na frente e acionam a rede de fornecedores para checar disponibilidade imediata e envio expresso."
+      },
+      {
+        "title": "Documentação à vista antes da compra",
+        "text": "Confirmamos com o fornecedor a documentação disponível e avisamos você das condições específicas da peça antes de fechar."
+      },
+      {
+        "title": "Acompanhamento do pedido",
+        "text": "Coordenamos a compra e acompanhamos o pedido da cotação até a chegada da peça ao Brasil."
+      },
+      {
+        "title": "Base nos EUA, atendimento em português",
+        "text": "Operação na Flórida, negociando direto com o mercado americano, no seu idioma."
+      }
+    ]
+  },
+  "docs": {
+    "title": "O que acompanha cada peça",
+    "text": "A documentação depende da origem, da condição e dos requisitos aplicáveis à peça. Dependendo do caso, pode incluir:",
+    "items": [
+      "FAA Form 8130-3",
+      "EASA Form 1",
+      "Certificado de conformidade",
+      "Documentação de rastreabilidade",
+      "Registros técnicos correspondentes"
+    ],
+    "closing": "Antes de fechar a compra, confirmamos com o fornecedor o que está disponível para cada item e informamos você. A documentação vem dos fabricantes, distribuidores e organizações responsáveis pela peça."
+  },
+  "global": {
+    "title": "Do mercado americano para o seu hangar",
+    "text": "Nosso foco é a rota Estados Unidos e Brasil, e temos em vista ampliar as relações com outros mercados da América Latina. Cada operação internacional segue a legislação de exportação dos EUA, as regras de importação do país de destino e as restrições aplicáveis a produtos e destinatários."
+  },
+  "aircraft": {
+    "title": "Aeronaves que atendemos",
+    "text": "Atendemos demandas de aeronaves de asa fixa, de pistão, turboélice e jatos executivos, conforme a disponibilidade dos componentes e a nossa capacidade de fornecimento.",
+    "typeHead": "Tipo",
+    "modelsHead": "Aeronaves mais comuns nas nossas demandas",
+    "rows": [
+      {
+        "type": "Turboélice",
+        "models": "Cessna Grand Caravan EX, King Air 350, Piper M600"
+      },
+      {
+        "type": "Pistão",
+        "models": "Cessna 172, Beechcraft Bonanza, Cirrus SR22"
+      },
+      {
+        "type": "Jatos executivos",
+        "models": "Citation CJ3, Embraer Phenom 300"
+      }
+    ],
+    "clientsTitle": "Quem atendemos",
+    "clients": "Táxi aéreo, aviação agrícola, aviação executiva e geral, oficinas de manutenção (MRO), empresas de serviços aeronáuticos e outros compradores especializados.",
+    "makersTitle": "Fabricantes",
+    "makers": "Atendemos aeronaves Cessna, Beechcraft, Piper e Cirrus, entre outras."
+  },
+  "testimonials": {
+    "title": "O que dizem os nossos clientes",
+    "items": [
+      {
+        "quote": "Conhecimento, pontualidade e confiança. Parabéns Amazon Jet Aviation e obrigado pelo prazo cumprido e responsabilidade no envio de nossos suprimentos.",
+        "name": "Valério G. Silva",
+        "role": "Diretor, Piquiatuba Táxi Aéreo"
+      },
+      {
+        "quote": "A Amazon Jet é uma empresa padrão ouro, destacando-se pela excelência no atendimento, compromisso com a qualidade e cumprimento rigoroso dos prazos.",
+        "name": "Josiane Berghahn",
+        "role": "Cliente"
+      },
+      {
+        "quote": "Uma empresa de super credibilidade, confiança e produtos de qualidade e procedência.",
+        "name": "Bruce Brito",
+        "role": "Cliente"
+      }
+    ]
+  },
+  "world": {
+    "title": "Patrocinadora oficial da Volta ao Mundo 2026",
+    "text": "O piloto Mário Jorge, o Comandante, lidera uma expedição por mais de 45 países, em cerca de 120 dias, a bordo de um monomotor. A Amazon Jet é patrocinadora oficial da missão.",
+    "cta": "Ler sobre a expedição"
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "seeAll": "Ver todas",
+    "items": [
+      {
+        "q": "Como peço uma cotação?",
+        "a": "Pelo formulário de cotação do site, buscando pelo part number ou pela descrição da peça, ou direto pelo WhatsApp +1 (954) 778-4501 e pelo e-mail commercial@amazonjetaviation.com. Você recebe uma proposta com a condição da peça, a documentação disponível e as formas de pagamento."
+      },
+      {
+        "q": "Vocês têm estoque próprio?",
+        "a": "Nossa atuação é de sourcing. Pesquisamos fornecedores, fabricantes e distribuidores e não ficamos limitados a um catálogo de estoque próprio. Isso nos permite buscar soluções para diferentes aeronaves e necessidades, inclusive demandas urgentes de AOG."
+      },
+      {
+        "q": "Quanto tempo leva uma cotação e uma entrega?",
+        "a": "Varia conforme o part number, a condição da peça, a localização do fornecedor, a disponibilidade, a documentação necessária e o destino final. Fale com a gente para saber o prazo da sua peça. Pedidos AOG são priorizados."
+      },
+      {
+        "q": "Como funciona o atendimento AOG?",
+        "a": "Pedidos de aeronave no solo recebem tratamento prioritário. Acionamos a nossa rede de fornecedores para verificar disponibilidade imediata, alternativas de fornecimento e possibilidades de envio expresso. O atendimento é de segunda a sexta, das 9h às 17h (horário da Flórida)."
+      },
+      {
+        "q": "Que condições de peças vocês fornecem?",
+        "a": "Peças novas, overhauled, repaired e serviceable, conforme a disponibilidade e a sua necessidade."
+      },
+      {
+        "q": "Que documentos acompanham as peças?",
+        "a": "Depende da origem, da condição e dos requisitos aplicáveis. Pode incluir FAA Form 8130-3, EASA Form 1, certificado de conformidade, documentação de rastreabilidade e registros técnicos. Antes da venda, confirmamos com o fornecedor a documentação disponível e informamos você das condições específicas da peça."
+      },
+      {
+        "q": "Vocês fazem overhaul ou manutenção?",
+        "a": "Não. Nosso trabalho é sourcing e fornecimento. Podemos buscar componentes que já passaram por revisão ou reparo em organizações especializadas, nas condições overhauled, repaired ou serviceable, com a documentação do fornecedor. Troca padrão (standard exchange) e devolução de core são negociadas conforme as condições comerciais."
+      },
+      {
+        "q": "Quem cuida do desembaraço e como ficam os custos de importação?",
+        "a": "Coordenamos a compra, a documentação comercial e o transporte internacional com operadores logísticos e parceiros especializados. O desembaraço aduaneiro é feito pelo importador e pelos profissionais habilitados, conforme a modalidade contratada. Custos e impostos de importação dependem de cada operação."
+      },
+      {
+        "q": "Como funciona o pagamento?",
+        "a": "As condições dependem do perfil do cliente, do valor da operação, da disponibilidade da peça e das condições do fornecedor. As formas de pagamento vêm na proposta, antes de você confirmar a compra. Condições especiais podem ser avaliadas caso a caso."
+      },
+      {
+        "q": "Vocês atendem outros países além do Brasil?",
+        "a": "Nosso foco é a rota Estados Unidos e Brasil, e temos em vista ampliar para outros mercados da América Latina. Avaliamos cada oportunidade conforme a necessidade, a disponibilidade dos componentes e a viabilidade da operação. Toda operação segue a legislação de exportação dos EUA, as regras de importação do país de destino e as restrições aplicáveis a produtos e destinatários."
+      },
+      {
+        "q": "A Amazon Jet é distribuidora autorizada de alguma marca?",
+        "a": "Somos uma empresa de sourcing e fornecimento. Buscamos as peças na rede de fornecedores, fabricantes e distribuidores e informamos a documentação e as condições de cada item na proposta."
+      }
+    ]
+  },
+  "final": {
+    "title": "Precisa de uma peça? Manda o part number.",
+    "text": "A gente pesquisa a rede, compara as opções e volta com uma proposta clara.",
+    "primary": "Pedir cotação",
+    "secondary": "Falar no WhatsApp"
+  },
   "footer": {
     "tagline": "Sourcing e fornecimento de peças aeronáuticas dos EUA para o Brasil.",
     "contact": "Contato",

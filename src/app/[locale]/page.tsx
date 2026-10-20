@@ -2,6 +2,17 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { PartSearch } from '@/components/part-search';
+import { About, HowItWorks, Services } from '@/components/home/story';
+import {
+  Aircraft,
+  Documentation,
+  GlobalReach,
+  Testimonials,
+  WhyUs,
+  WorldTour,
+} from '@/components/home/proof';
+import { AogBand, FinalCta } from '@/components/home/action';
+import { FaqSection } from '@/components/home/faq-section';
 import { aogWhatsappUrl } from '@/lib/contact';
 
 export default async function HomePage({
@@ -16,6 +27,18 @@ export default async function HomePage({
     <>
       <Hero />
       <FactStrip />
+      <About />
+      <Services />
+      <HowItWorks />
+      <AogBand />
+      <WhyUs />
+      <Documentation />
+      <GlobalReach />
+      <Aircraft />
+      <Testimonials />
+      <WorldTour />
+      <FaqSection />
+      <FinalCta />
     </>
   );
 }
@@ -25,8 +48,13 @@ function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-mist to-surface">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-24">
-        <div>
+      {/*
+        Ordem no DOM: texto, busca, botões. No celular empilha nessa ordem,
+        que é a que serve. No desktop a busca vai para a coluna da direita
+        por posicionamento explícito, e os botões sobem para baixo do texto.
+      */}
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-24">
+        <div className="lg:col-start-1 lg:row-start-1">
           <p className="tag">{t('eyebrow')}</p>
 
           <h1 className="mt-6 font-display text-[clamp(2.1rem,5.2vw,3.6rem)] leading-[1.06]">
@@ -36,8 +64,19 @@ function Hero() {
           <p className="measure mt-6 text-lg leading-relaxed text-ink-soft">
             {t('text')}
           </p>
+        </div>
 
-          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
+        {/*
+          O hero não abre com foto de avião: abre com a busca funcionando,
+          que é o que a empresa faz e a ação principal da página. No celular
+          ela sobe para logo depois do texto, antes dos botões.
+        */}
+        <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start lg:pt-2">
+          <PartSearch />
+        </div>
+
+        <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             <Link
               href="/cotacao"
               className="bg-ink px-6 py-3.5 text-base font-semibold text-surface transition-colors hover:bg-ink-700"
@@ -55,14 +94,6 @@ function Hero() {
           </div>
 
           <p className="measure mt-6 text-sm text-ink-soft">{t('support')}</p>
-        </div>
-
-        {/*
-          O hero não abre com foto de avião: abre com a busca funcionando,
-          que é o que a empresa realmente faz e a ação principal da página.
-        */}
-        <div className="lg:pt-2">
-          <PartSearch />
         </div>
       </div>
     </section>
