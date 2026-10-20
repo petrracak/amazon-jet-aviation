@@ -1,0 +1,492 @@
+[
+ {
+  "pn": "05K23037",
+  "name": "Cylinder Kit",
+  "description": "Cylinder kit for Lycoming O-235 series engines.",
+  "manufacturer": "Lycoming",
+  "category": "Motor"
+ },
+ {
+  "pn": "LW-12417",
+  "name": "Oil Filter Element",
+  "description": "Oil filter for Lycoming O-320/O-360 engines.",
+  "manufacturer": "Lycoming",
+  "category": "Filtro"
+ },
+ {
+  "pn": "CH48110-1",
+  "name": "Oil Filter Adapter",
+  "description": "Oil filter adapter for Continental engines.",
+  "manufacturer": "Continental",
+  "category": "Filtro"
+ },
+ {
+  "pn": "10-357300",
+  "name": "Magneto 500",
+  "description": "Right magneto for Lycoming engines, impulse coupled.",
+  "manufacturer": "Bendix",
+  "category": "Magneto"
+ },
+ {
+  "pn": "10-163060-1",
+  "name": "Magneto Harness",
+  "description": "Ignition harness assembly for 4-cylinder Lycoming.",
+  "manufacturer": "Bendix",
+  "category": "Magneto"
+ },
+ {
+  "pn": "REM40E",
+  "name": "Spark Plug",
+  "description": "Massive electrode spark plug for aviation engines.",
+  "manufacturer": "Champion",
+  "category": "Vela"
+ },
+ {
+  "pn": "UREM37BY",
+  "name": "Spark Plug Fine Wire",
+  "description": "Fine wire spark plug for superior performance.",
+  "manufacturer": "Tempest",
+  "category": "Vela"
+ },
+ {
+  "pn": "AEL-202-A14F",
+  "name": "Alternator 14V",
+  "description": "14V 60A alternator for Lycoming engines.",
+  "manufacturer": "Plane-Power",
+  "category": "Alternador"
+ },
+ {
+  "pn": "646608",
+  "name": "Brake Lining Kit",
+  "description": "Brake lining set for Cleveland wheels.",
+  "manufacturer": "Cleveland",
+  "category": "Freio"
+ },
+ {
+  "pn": "066-10300",
+  "name": "Brake Disc",
+  "description": "Brake disc for single-disc Cleveland brakes.",
+  "manufacturer": "Cleveland",
+  "category": "Freio"
+ },
+ {
+  "pn": "SL74418",
+  "name": "Piston Pin",
+  "description": "Piston pin for Lycoming O-360 series.",
+  "manufacturer": "Lycoming",
+  "category": "Motor"
+ },
+ {
+  "pn": "LW-18524",
+  "name": "Exhaust Valve",
+  "description": "Exhaust valve for O-320/O-360 Lycoming.",
+  "manufacturer": "Lycoming",
+  "category": "Motor"
+ },
+ {
+  "pn": "LW-13870",
+  "name": "Ring Set",
+  "description": "Piston ring set for Lycoming O-320.",
+  "manufacturer": "Lycoming",
+  "category": "Motor"
+ },
+ {
+  "pn": "SL13694",
+  "name": "Intake Valve",
+  "description": "Intake valve for Lycoming O-235/O-320.",
+  "manufacturer": "Lycoming",
+  "category": "Motor"
+ },
+ {
+  "pn": "654745",
+  "name": "Gasket Set - Overhaul",
+  "description": "Complete overhaul gasket set for O-360.",
+  "manufacturer": "Lycoming",
+  "category": "Motor"
+ },
+ {
+  "pn": "AEC-204",
+  "name": "Alternator 28V",
+  "description": "28V alternator for Continental engines.",
+  "manufacturer": "Plane-Power",
+  "category": "Alternador"
+ },
+ {
+  "pn": "C75-1",
+  "name": "Carburetor",
+  "description": "Carburetor for Continental C-75/C-85 engines.",
+  "manufacturer": "Marvel-Schebler",
+  "category": "Motor"
+ },
+ {
+  "pn": "RA-3A4",
+  "name": "Voltage Regulator",
+  "description": "Voltage regulator for 14V alternator systems.",
+  "manufacturer": "Plane-Power",
+  "category": "Alternador"
+ },
+ {
+  "pn": "0450352",
+  "name": "Oil Pump Assembly",
+  "description": "Oil pump for Continental O-200 engines.",
+  "manufacturer": "Continental",
+  "category": "Bomba"
+ },
+ {
+  "pn": "0550116",
+  "name": "Fuel Pump",
+  "description": "Engine-driven fuel pump for Continental IO-520.",
+  "manufacturer": "Continental",
+  "category": "Bomba"
+ },
+ {
+  "pn": "LW-15473",
+  "name": "Fuel Pump Drive",
+  "description": "Fuel pump drive for Lycoming O-360.",
+  "manufacturer": "Lycoming",
+  "category": "Bomba"
+ },
+ {
+  "pn": "PHC-C69",
+  "name": "Propeller Hub",
+  "description": "Propeller hub assembly for constant-speed props.",
+  "manufacturer": "Hartzell",
+  "category": "Hélice"
+ },
+ {
+  "pn": "A6541A-4",
+  "name": "Propeller Blade",
+  "description": "Propeller blade assembly for HC-C2Y series.",
+  "manufacturer": "Hartzell",
+  "category": "Hélice"
+ },
+ {
+  "pn": "B3R28C404-B",
+  "name": "Propeller Assembly",
+  "description": "3-blade propeller for Lycoming TIO-540.",
+  "manufacturer": "Hartzell",
+  "category": "Hélice"
+ },
+ {
+  "pn": "1A646/F",
+  "name": "McCauley Prop",
+  "description": "2-blade fixed pitch propeller.",
+  "manufacturer": "McCauley",
+  "category": "Hélice"
+ },
+ {
+  "pn": "RA-1A4",
+  "name": "Regulator 28V",
+  "description": "28V voltage regulator for generator systems.",
+  "manufacturer": "Plane-Power",
+  "category": "Alternador"
+ },
+ {
+  "pn": "AA1A2",
+  "name": "Starter Motor",
+  "description": "Starter motor for Lycoming O-320/O-360.",
+  "manufacturer": "Sky-Tec",
+  "category": "Motor"
+ },
+ {
+  "pn": "C12ST5",
+  "name": "Starter 12V",
+  "description": "12V lightweight starter for Continental O-200/O-300.",
+  "manufacturer": "Sky-Tec",
+  "category": "Motor"
+ },
+ {
+  "pn": "S-1200-2",
+  "name": "Magneto Slick",
+  "description": "Slick magneto for 4-cylinder Lycoming engines.",
+  "manufacturer": "Slick",
+  "category": "Magneto"
+ },
+ {
+  "pn": "M-3079",
+  "name": "Magneto Cap",
+  "description": "Magneto distributor cap for S-1200 series.",
+  "manufacturer": "Slick",
+  "category": "Magneto"
+ },
+ {
+  "pn": "AA825-6",
+  "name": "Dry Air Pump",
+  "description": "Dry vacuum pump for instrument systems.",
+  "manufacturer": "Rapco",
+  "category": "Bomba"
+ },
+ {
+  "pn": "RA-215CC",
+  "name": "Wet Vacuum Pump",
+  "description": "Wet vacuum pump for gyro instruments.",
+  "manufacturer": "Rapco",
+  "category": "Bomba"
+ },
+ {
+  "pn": "065-00600",
+  "name": "Tire Main Wheel",
+  "description": "Main wheel tire 6.00-6 for Cessna 172.",
+  "manufacturer": "McCreary",
+  "category": "Freio"
+ },
+ {
+  "pn": "072-310-1",
+  "name": "Nose Wheel Assembly",
+  "description": "Nose wheel and tire assembly for Cessna 172/182.",
+  "manufacturer": "Cleveland",
+  "category": "Freio"
+ },
+ {
+  "pn": "9910296-2",
+  "name": "Fuel Selector Valve",
+  "description": "Fuel selector valve for Cessna 172.",
+  "manufacturer": "Cessna",
+  "category": "Célula"
+ },
+ {
+  "pn": "0411782",
+  "name": "Fuel Injector Nozzle",
+  "description": "Fuel injector nozzle for IO-520/IO-550.",
+  "manufacturer": "Continental",
+  "category": "Motor"
+ },
+ {
+  "pn": "FS6211",
+  "name": "Fuel Strainer",
+  "description": "Fuel strainer Gascolator for Cessna/Piper.",
+  "manufacturer": "Facet",
+  "category": "Célula"
+ },
+ {
+  "pn": "35-A22-101",
+  "name": "Attitude Indicator",
+  "description": "Attitude indicator AI gyro instrument 3-inch.",
+  "manufacturer": "RC Allen",
+  "category": "Aviônico"
+ },
+ {
+  "pn": "GI-275",
+  "name": "Flight Instrument",
+  "description": "Garmin GI 275 electronic flight instrument.",
+  "manufacturer": "Garmin",
+  "category": "Aviônico"
+ },
+ {
+  "pn": "GTX-345",
+  "name": "Transponder ADS-B",
+  "description": "Garmin GTX 345 transponder with ADS-B In/Out.",
+  "manufacturer": "Garmin",
+  "category": "Aviônico"
+ },
+ {
+  "pn": "GNC-255A",
+  "name": "NAV/COMM Radio",
+  "description": "Garmin GNC 255A NAV/COMM radio.",
+  "manufacturer": "Garmin",
+  "category": "Aviônico"
+ },
+ {
+  "pn": "KX-170B",
+  "name": "NAV/COMM Legacy",
+  "description": "Bendix King KX 170B legacy NAV/COMM.",
+  "manufacturer": "BendixKing",
+  "category": "Aviônico"
+ },
+ {
+  "pn": "0756010-7",
+  "name": "Window Assy",
+  "description": "Windshield assembly for Cessna 172N/P.",
+  "manufacturer": "Cessna",
+  "category": "Célula"
+ },
+ {
+  "pn": "40625-000",
+  "name": "Flap Actuator",
+  "description": "Electric flap actuator motor for Piper PA-28.",
+  "manufacturer": "Piper",
+  "category": "Célula"
+ },
+ {
+  "pn": "62700-003",
+  "name": "Aileron Cable",
+  "description": "Aileron control cable assembly for PA-28.",
+  "manufacturer": "Piper",
+  "category": "Célula"
+ },
+ {
+  "pn": "RA-4A1",
+  "name": "Regulator 14V Gen",
+  "description": "14V generator voltage regulator.",
+  "manufacturer": "Plane-Power",
+  "category": "Alternador"
+ },
+ {
+  "pn": "101-389006-3",
+  "name": "Heater Duct",
+  "description": "Cabin heater duct for Beechcraft Bonanza.",
+  "manufacturer": "Beechcraft",
+  "category": "Célula"
+ },
+ {
+  "pn": "58-380056-3",
+  "name": "Landing Gear Actuator",
+  "description": "Electric landing gear actuator for Bonanza.",
+  "manufacturer": "Beechcraft",
+  "category": "Célula"
+ },
+ {
+  "pn": "CH48108-1",
+  "name": "Oil Filter",
+  "description": "Spin-on oil filter for Continental engines.",
+  "manufacturer": "Champion",
+  "category": "Filtro"
+ },
+ {
+  "pn": "LW-12345",
+  "name": "Oil Filter Standard",
+  "description": "Standard spin-on oil filter for Lycoming.",
+  "manufacturer": "Lycoming",
+  "category": "Filtro"
+ },
+ {
+  "pn": "RA-D1A1",
+  "name": "Dual Alternator Reg",
+  "description": "Dual alternator voltage regulator 14V.",
+  "manufacturer": "Plane-Power",
+  "category": "Alternador"
+ },
+ {
+  "pn": "AN3-11A",
+  "name": "Bolt AN3",
+  "description": "AN3 aircraft bolt, 11/16 grip, cadmium plated.",
+  "manufacturer": "Standard",
+  "category": "Hardware"
+ },
+ {
+  "pn": "MS20365-1032",
+  "name": "Self-Lock Nut",
+  "description": "Self-locking nut MS20365 for aircraft assembly.",
+  "manufacturer": "Standard",
+  "category": "Hardware"
+ },
+ {
+  "pn": "AN960-416",
+  "name": "Flat Washer",
+  "description": "AN960 flat washer for aircraft applications.",
+  "manufacturer": "Standard",
+  "category": "Hardware"
+ },
+ {
+  "pn": "206-011-126-001",
+  "name": "Ring",
+  "description": "Retaining ring / seal ring for Bell 206.",
+  "manufacturer": "Bell Helicopter",
+  "category": "Hardware"
+ },
+ {
+  "pn": "10-61270-13",
+  "name": "Filtro de óleo",
+  "description": "Filtro de óleo para motores Lycoming (comum em aeronaves leves).",
+  "manufacturer": "Lycoming",
+  "category": "Filtro"
+ },
+ {
+  "pn": "73428",
+  "name": "Assento da válvula",
+  "description": "Assento de assento da válvula, uma peça interna de motor de alta precisão.",
+  "manufacturer": "Genuíno",
+  "category": "Motor"
+ },
+ {
+  "pn": "0700-1110",
+  "name": "Interruptor de pressão",
+  "description": "Interruptor de pressão (Pressure Switch) usado em sistemas pneumáticos e de ar condicionado.",
+  "manufacturer": "Genuíno",
+  "category": "Componente"
+ },
+ {
+  "pn": "BACB30NN3K10",
+  "name": "Pino de alta resistência",
+  "description": "Pino de alta resistência padrão Boeing (Bolt), usado na estrutura (fuselagem/asa).",
+  "manufacturer": "Boeing",
+  "category": "Hardware"
+ },
+ {
+  "pn": "40-75",
+  "name": "Conjunto de freio",
+  "description": "Conjunto de freio (Wheel and Brake Assembly) da Cleveland, comum em Cessna e Piper.",
+  "manufacturer": "Cleveland",
+  "category": "Freio"
+ },
+ {
+  "pn": "AN960-416",
+  "name": "Arruela Plana",
+  "description": "Arruela plana padrão AN (Army-Navy) para aplicações aeronáuticas gerais.",
+  "manufacturer": "Standard",
+  "category": "Hardware"
+ },
+ {
+  "pn": "MS21042L3",
+  "name": "Porca Autotravante",
+  "description": "Porca autotravante (Self-locking nut) de alta resistência padrão MS.",
+  "manufacturer": "Military Standard",
+  "category": "Hardware"
+ },
+ {
+  "pn": "NAS1149F0332P",
+  "name": "Arruela Técnica",
+  "description": "Arruela técnica de precisão padrão NAS (National Aerospace Standard).",
+  "manufacturer": "Standard",
+  "category": "Hardware"
+ },
+ {
+  "pn": "0622-0010",
+  "name": "Filtro de Óleo",
+  "description": "Filtro de óleo de motor revisado/genérico para diversas aeronaves.",
+  "manufacturer": "Variado",
+  "category": "Filtro"
+ },
+ {
+  "pn": "GS1900-1-1",
+  "name": "Braçadeira de Mangueira",
+  "description": "Braçadeira de mangueira (Hose Clamp) específica para aeronaves Gulfstream.",
+  "manufacturer": "Gulfstream",
+  "category": "Hardware"
+ },
+ {
+  "pn": "60-70003-3",
+  "name": "Filtro de Ar",
+  "description": "Filtro de ar para motores Beechcraft (King Air / Baron / Bonanza).",
+  "manufacturer": "Beechcraft",
+  "category": "Filtro"
+ },
+ {
+  "pn": "10-381710-1",
+  "name": "Rolamento de Roda",
+  "description": "Rolamento de roda de aeronave para trens de pouso Cleveland.",
+  "manufacturer": "Cleveland",
+  "category": "Freio"
+ },
+ {
+  "pn": "35-380005-1",
+  "name": "Cabo de Controle",
+  "description": "Conjunto de cabo de controle de ar da cabine (Cabin Air Control Cable Assembly) para Beechcraft.",
+  "manufacturer": "Beechcraft",
+  "category": "Célula"
+ },
+ {
+  "pn": "700101-1",
+  "name": "Lâmpada de Navegação",
+  "description": "Lâmpada de navegação / luz de asa para sinalização externa.",
+  "manufacturer": "Grimes/Honeywell",
+  "category": "Aviônico"
+ },
+ {
+  "pn": "AV-534",
+  "name": "Antena VHF/GPS",
+  "description": "Antena combinada VHF/GPS da Comant para comunicação e navegação.",
+  "manufacturer": "Comant",
+  "category": "Aviônico"
+ }
+]

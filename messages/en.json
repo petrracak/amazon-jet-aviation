@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "how": "How it works",
+    "blog": "Blog",
+    "quote": "Request a quote",
+    "aog": "AOG",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "Aircraft parts from the US to your hangar in Brazil",
+    "title": "We find the right part in the US and coordinate its way to your hangar.",
+    "text": "Sourcing and supply of aircraft parts and components: new, overhauled, repaired and serviceable. You deal with one team, and we compare sources, paperwork and lead times for you.",
+    "searchLabel": "Search by part number or description",
+    "searchPlaceholder": "Enter the part number or part name",
+    "searchButton": "Search",
+    "searchHint": "Try",
+    "primary": "Request a quote",
+    "secondary": "Aircraft on ground? Start AOG",
+    "support": "Monday to Friday, 9am to 5pm (Florida time). AOG requests come first."
+  },
+  "search": {
+    "searching": "Searching parts...",
+    "resultsOne": "1 part found",
+    "resultsOther": "{count} parts found",
+    "add": "Add to quote",
+    "added": "In your quote",
+    "empty": "Not in the catalogue? No problem. Add the part number by hand and we will search our supplier network.",
+    "emptyAction": "Request a quote for {pn}",
+    "error": "The search failed. Please try again in a moment."
+  },
+  "facts": {
+    "floridaLabel": "Florida",
+    "floridaValue": "Offices in Miami and Deerfield Beach",
+    "routeLabel": "US → Brazil",
+    "routeValue": "Our main route",
+    "sinceLabel": "Since 2025",
+    "sinceValue": "Operating since August 2025",
+    "conditionsLabel": "4 conditions",
+    "conditionsValue": "New, overhauled, repaired and serviceable parts"
+  },
+  "footer": {
+    "tagline": "Sourcing and supply of aircraft parts from the US to Brazil.",
+    "contact": "Contact",
+    "offices": "Addresses",
+    "miami": "200 S Biscayne Blvd, Suite 20-107, Miami, FL 33131, United States",
+    "deerfield": "455 Fairway Drive, Suite 214, Deerfield Beach, FL 33441, United States",
+    "hours": "Monday to Friday, 9am to 5pm (Florida time)",
+    "navTitle": "Navigation",
+    "legal": "Brands and models named here belong to their respective owners and serve to identify aircraft and parts. Naming them does not indicate authorised distribution or official representation unless expressly stated. All international operations are subject to US export law, the import rules of the destination country and the restrictions applicable to products and recipients.",
+    "rights": "© {year} Amazon Jet Aviation. All rights reserved."
+  },
+  "common": {
+    "whatsapp": "Message us on WhatsApp",
+    "aogWhatsapp": "Start AOG on WhatsApp"
+  }
+}

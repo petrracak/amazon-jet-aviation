@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+
+/*
+  Tokens — ver docs/design-plan.md para o porquê de cada escolha.
+  Resumo: tinta de hangar para texto e botão primário, alumínio para alternar
+  seções, âmbar de etiqueta de peça como acento, vermelho exclusivo do AOG.
+*/
+@theme {
+  --color-ink: #0b1b2b;
+  --color-ink-700: #16304a;
+  --color-ink-soft: #5b6b7b;
+  --color-surface: #ffffff;
+  --color-mist: #edf0f3;
+  --color-mist-deep: #dde3e9;
+  --color-tag: #e3a008;
+  --color-tag-soft: #fdf3dc;
+  --color-aog: #c3252b;
+  --color-signal: #0e4fc4;
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv05' 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Títulos: grotesca mecânica, tracking fechado, sem caixa alta decorativa. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visível em tudo que recebe teclado. */
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-tag-soft);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  /*
+    Part number. Monoespaçada aqui é função, não enfeite: separa 0 de O e
+    1 de I, que é onde um pedido de peça erra e custa caro.
+  */
+  .pn {
+    font-family: var(--font-mono);
+    font-variant-ligatures: none;
+    letter-spacing: 0.01em;
+  }
+
+  .measure {
+    max-width: 68ch;
+  }
+
+  /* Etiqueta de peça: o acento da marca, vindo do yellow tag de serviceable. */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.625rem;
+    background: var(--color-tag-soft);
+    color: #6b4a00;
+    border-left: 3px solid var(--color-tag);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

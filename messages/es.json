@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "how": "Cómo funciona",
+    "blog": "Blog",
+    "quote": "Cotización",
+    "aog": "AOG",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "language": "Idioma"
+  },
+  "hero": {
+    "eyebrow": "Piezas aeronáuticas de EE. UU. para su hangar",
+    "title": "Localizamos la pieza correcta en EE. UU. y coordinamos su llegada a su hangar.",
+    "text": "Sourcing y suministro de piezas y componentes aeronáuticos, nuevos, overhauled, repaired y serviceable. Usted habla con un solo equipo y nosotros comparamos fuentes, documentación y plazos.",
+    "searchLabel": "Buscar pieza por part number o descripción",
+    "searchPlaceholder": "Escriba el part number o el nombre de la pieza",
+    "searchButton": "Buscar",
+    "searchHint": "Pruebe",
+    "primary": "Pedir cotización",
+    "secondary": "¿Aeronave en tierra? Activar AOG",
+    "support": "Atención de lunes a viernes, de 9 a 17 h (hora de Florida). Los pedidos AOG tienen prioridad."
+  },
+  "search": {
+    "searching": "Buscando piezas...",
+    "resultsOne": "1 pieza encontrada",
+    "resultsOther": "{count} piezas encontradas",
+    "add": "Añadir a la cotización",
+    "added": "En la cotización",
+    "empty": "¿No está en el catálogo? Sin problema. Añada el part number manualmente y lo buscamos en nuestra red de proveedores.",
+    "emptyAction": "Pedir cotización de {pn}",
+    "error": "La búsqueda falló. Inténtelo de nuevo en un momento."
+  },
+  "facts": {
+    "floridaLabel": "Florida",
+    "floridaValue": "Oficinas en Miami y Deerfield Beach",
+    "routeLabel": "EE. UU. → Brasil",
+    "routeValue": "Ruta principal de la operación",
+    "sinceLabel": "Desde 2025",
+    "sinceValue": "En operación desde agosto de 2025",
+    "conditionsLabel": "4 condiciones",
+    "conditionsValue": "Piezas nuevas, overhauled, repaired y serviceable"
+  },
+  "footer": {
+    "tagline": "Sourcing y suministro de piezas aeronáuticas de EE. UU. para Brasil.",
+    "contact": "Contacto",
+    "offices": "Direcciones",
+    "miami": "200 S Biscayne Blvd, Suite 20-107, Miami, FL 33131, Estados Unidos",
+    "deerfield": "455 Fairway Drive, Suite 214, Deerfield Beach, FL 33441, Estados Unidos",
+    "hours": "De lunes a viernes, de 9 a 17 h (hora de Florida)",
+    "navTitle": "Navegación",
+    "legal": "Las marcas y modelos citados pertenecen a sus respectivos propietarios y sirven para identificar aeronaves y piezas. Su mención no indica distribución autorizada ni representación oficial, salvo cuando se informe expresamente. Todas las operaciones internacionales están sujetas a la legislación de exportación de EE. UU., a las reglas de importación del país de destino y a las restricciones aplicables a productos y destinatarios.",
+    "rights": "© {year} Amazon Jet Aviation. Todos los derechos reservados."
+  },
+  "common": {
+    "whatsapp": "Hablar por WhatsApp",
+    "aogWhatsapp": "Activar AOG por WhatsApp"
+  }
+}
