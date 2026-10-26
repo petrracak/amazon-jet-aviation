@@ -2,32 +2,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { Pixels } from '@/components/site/pixels';
+import { linkAog } from '@/lib/contact';
+import { classeFontes } from '@/lib/fonts';
+import { getConfig } from '@/lib/settings';
 import '../globals.css';
-
-const archivo = Archivo({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  variable: '--font-archivo',
-  display: 'swap',
-});
-
-const plexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-plex-sans',
-  display: 'swap',
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-plex-mono',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -53,11 +35,10 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
+  const { contato, mensagens, pixels } = await getConfig();
+
   return (
-    <html
-      lang={locale}
-      className={`${archivo.variable} ${plexSans.variable} ${plexMono.variable}`}
-    >
+    <html lang={locale} className={classeFontes}>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
           <a
@@ -66,12 +47,13 @@ export default async function LocaleLayout({
           >
             Ir para o conteúdo
           </a>
-          <SiteHeader />
+          <SiteHeader aogHref={linkAog(contato, mensagens)} />
           <main id="conteudo" className="flex-1">
             {children}
           </main>
-          <SiteFooter />
+          <SiteFooter contato={contato} />
         </NextIntlClientProvider>
+        <Pixels pixels={pixels} />
       </body>
     </html>
   );

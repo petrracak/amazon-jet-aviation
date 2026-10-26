@@ -13,7 +13,8 @@ import {
 } from '@/components/home/proof';
 import { AogBand, FinalCta } from '@/components/home/action';
 import { FaqSection } from '@/components/home/faq-section';
-import { aogWhatsappUrl } from '@/lib/contact';
+import { linkAog, linkWhatsApp } from '@/lib/contact';
+import { getConfig } from '@/lib/settings';
 
 export default async function HomePage({
   params,
@@ -23,14 +24,18 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  // Contatos e mensagens dos botões vêm do painel, não do código.
+  const { contato, mensagens } = await getConfig();
+  const aogHref = linkAog(contato, mensagens);
+
   return (
     <>
-      <Hero />
+      <Hero aogHref={aogHref} />
       <FactStrip />
       <About />
       <Services />
       <HowItWorks />
-      <AogBand />
+      <AogBand aogHref={aogHref} />
       <WhyUs />
       <Documentation />
       <GlobalReach />
@@ -38,12 +43,12 @@ export default async function HomePage({
       <Testimonials />
       <WorldTour />
       <FaqSection />
-      <FinalCta />
+      <FinalCta contato={contato} whatsappHref={linkWhatsApp(contato, mensagens)} />
     </>
   );
 }
 
-function Hero() {
+function Hero({ aogHref }: { aogHref: string }) {
   const t = useTranslations('hero');
 
   return (
@@ -84,7 +89,7 @@ function Hero() {
               {t('primary')}
             </Link>
             <a
-              href={aogWhatsappUrl()}
+              href={aogHref}
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-aog underline decoration-2 underline-offset-4 hover:no-underline"

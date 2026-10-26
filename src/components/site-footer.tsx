@@ -1,8 +1,9 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { EMAIL, WHATSAPP_DISPLAY, whatsappUrl } from '@/lib/contact';
+import { whatsappUrl } from '@/lib/contact';
+import type { Contato } from '@/lib/settings';
 
-export function SiteFooter() {
+export function SiteFooter({ contato }: { contato: Contato }) {
   const t = useTranslations('footer');
   const nav = useTranslations('nav');
 
@@ -52,27 +53,30 @@ export function SiteFooter() {
             <h2 className="text-sm font-semibold">{t('contact')}</h2>
             <ul className="mt-4 space-y-2.5 text-sm text-white/65">
               <li>
-                <a href={`mailto:${EMAIL}`} className="hover:text-white">
-                  {EMAIL}
+                <a href={`mailto:${contato.email}`} className="hover:text-white">
+                  {contato.email}
                 </a>
               </li>
               <li>
                 <a
-                  href={whatsappUrl()}
+                  href={whatsappUrl(contato.whatsapp)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pn hover:text-white"
                 >
-                  {WHATSAPP_DISPLAY}
+                  {contato.telefone_exibicao}
                 </a>
               </li>
-              <li className="pt-2 text-white/50">{t('hours')}</li>
+              {/* Horário e endereços vêm do painel, então a equipe muda sem
+                  programador. Ainda não são traduzidos: em /en e /es
+                  aparecem como foram escritos aqui. */}
+              <li className="pt-2 text-white/50">{contato.horario}</li>
             </ul>
 
             <h2 className="mt-8 text-sm font-semibold">{t('offices')}</h2>
             <address className="mt-4 space-y-3 text-sm not-italic leading-relaxed text-white/60">
-              <p>{t('miami')}</p>
-              <p>{t('deerfield')}</p>
+              <p>{contato.endereco_miami}</p>
+              <p>{contato.endereco_deerfield}</p>
             </address>
           </div>
         </div>

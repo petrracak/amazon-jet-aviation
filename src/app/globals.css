@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+/* O painel tem tema claro e escuro, escolhido pela pessoa e aplicado como
+   classe pelo next-themes. Sem isto, o `dark:` seguiria a preferência do
+   sistema e discordaria dos tokens. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /*
   Tokens — ver docs/design-plan.md para o porquê de cada escolha.
   Resumo: tinta de hangar para texto e botão primário, alumínio para alternar
@@ -24,6 +29,59 @@
   --radius-sm: 2px;
   --radius-md: 4px;
   --radius-lg: 6px;
+}
+
+/* ===================================================================
+   Painel: tokens semânticos próprios.
+   O site público é um impresso técnico, de cantos retos. O painel é um
+   aplicativo que a equipe usa todo dia no celular, então ganha cantos
+   arredondados e alvos de toque grandes. A identidade continua a mesma:
+   a tinta de hangar no fundo escuro, o azul de ação e o âmbar de etiqueta.
+   =================================================================== */
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #eef1f4;
+  --bg-elevated: #ffffff;
+  --fg: #0b1b2b;
+  --fg-muted: #5b6b7b;
+  --fg-subtle: #8c99a7;
+  --border: #e3e7ec;
+  --border-strong: #cfd6de;
+  --accent: #0e4fc4;
+  --accent-hover: #0a3e9e;
+  --accent-fg: #ffffff;
+  --ring: #0e4fc4;
+  --shadow-card: 0 1px 2px rgb(11 27 43 / 0.04), 0 8px 24px rgb(11 27 43 / 0.06);
+}
+
+.dark {
+  --bg: #0b1b2b;
+  --bg-subtle: #0f2437;
+  --bg-elevated: #142c42;
+  --fg: #e8eef5;
+  --fg-muted: #a2b2c3;
+  --fg-subtle: #74879c;
+  --border: #1e3950;
+  --border-strong: #2b4b66;
+  --accent: #5fa0f5;
+  --accent-hover: #8dbcf9;
+  --accent-fg: #06121e;
+  --ring: #5fa0f5;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px rgb(0 0 0 / 0.35);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-border-base: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
 }
 
 @layer base {

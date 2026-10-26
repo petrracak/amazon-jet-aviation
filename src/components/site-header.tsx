@@ -5,11 +5,10 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { locales } from '@/i18n/routing';
-import { aogWhatsappUrl } from '@/lib/contact';
 
 const localeNames: Record<string, string> = { pt: 'PT', en: 'EN', es: 'ES' };
 
-export function SiteHeader() {
+export function SiteHeader({ aogHref }: { aogHref: string }) {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
@@ -76,7 +75,7 @@ export function SiteHeader() {
           </Link>
 
           <a
-            href={aogWhatsappUrl()}
+            href={aogHref}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-aog px-3.5 py-2 text-sm font-semibold tracking-wide transition-opacity hover:opacity-90"

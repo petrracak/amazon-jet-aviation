@@ -1,19 +1,15 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Section, SectionTitle } from '@/components/section';
-import {
-  EMAIL,
-  WHATSAPP_DISPLAY,
-  aogWhatsappUrl,
-  whatsappUrl,
-} from '@/lib/contact';
+import type { Contato } from '@/lib/settings';
+import { whatsappUrl } from '@/lib/contact';
 
 /*
   Único bloco escuro do miolo da página, com a tarja vermelha reservada ao
   AOG. É o contraste mais alto do site porque é o momento de maior urgência
   do cliente: aeronave parada.
 */
-export function AogBand() {
+export function AogBand({ aogHref }: { aogHref: string }) {
   const t = useTranslations('aog');
   const steps = t.raw('steps') as { title: string; text: string }[];
 
@@ -32,7 +28,7 @@ export function AogBand() {
           </p>
 
           <a
-            href={aogWhatsappUrl()}
+            href={aogHref}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-9 inline-block bg-aog px-6 py-3.5 font-semibold text-white transition-opacity hover:opacity-90"
@@ -63,7 +59,13 @@ export function AogBand() {
   );
 }
 
-export function FinalCta() {
+export function FinalCta({
+  contato,
+  whatsappHref,
+}: {
+  contato: Contato;
+  whatsappHref: string;
+}) {
   const t = useTranslations('final');
 
   return (
@@ -82,7 +84,7 @@ export function FinalCta() {
             {t('primary')}
           </Link>
           <a
-            href={whatsappUrl()}
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             className="border-2 border-ink px-6 py-3 font-semibold transition-colors hover:bg-ink hover:text-surface"
@@ -92,12 +94,15 @@ export function FinalCta() {
         </div>
 
         <p className="mt-7 text-sm text-ink-soft">
-          <a href={`mailto:${EMAIL}`} className="underline underline-offset-4">
-            {EMAIL}
+          <a href={`mailto:${contato.email}`} className="underline underline-offset-4">
+            {contato.email}
           </a>
           <span className="mx-3 text-mist-deep">|</span>
-          <a href={whatsappUrl()} className="pn underline underline-offset-4">
-            {WHATSAPP_DISPLAY}
+          <a
+            href={whatsappUrl(contato.whatsapp)}
+            className="pn underline underline-offset-4"
+          >
+            {contato.telefone_exibicao}
           </a>
         </p>
       </div>
