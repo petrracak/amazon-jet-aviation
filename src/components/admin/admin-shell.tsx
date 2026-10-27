@@ -14,6 +14,7 @@ import {
   Settings,
   Sun,
   UserCircle,
+  UsersRound,
   type LucideIcon,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -42,6 +43,7 @@ const PRINCIPAIS: Item[] = [
 ];
 
 const GESTAO: Item[] = [
+  { href: '/admin/equipe', rotulo: 'Equipe', icone: UsersRound, admin: true },
   { href: '/admin/configuracoes', rotulo: 'Configurações', icone: Settings, admin: true },
   { href: '/admin/conta', rotulo: 'Minha conta', icone: UserCircle },
 ];
