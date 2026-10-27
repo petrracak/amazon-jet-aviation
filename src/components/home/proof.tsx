@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import {
-  Airplane,
   Barcode,
   Certificate,
   Eye,
@@ -23,7 +22,7 @@ type Icon = React.ComponentType<{
   className?: string;
 }>;
 
-import { Etiqueta, Reveal, Section, SectionTitle } from '@/components/section';
+import { Reveal, Section, SectionTitle } from '@/components/section';
 
 /* ------------------------------------------------------- diferenciais */
 
@@ -43,8 +42,7 @@ export function WhyUs() {
   return (
     <Section>
       <Reveal className="max-w-2xl">
-        <Etiqueta>{t('eyebrow')}</Etiqueta>
-        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+        <SectionTitle>{t('title')}</SectionTitle>
       </Reveal>
 
       <div className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
@@ -79,8 +77,7 @@ export function Documentation() {
     <Section tom="paper">
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
         <Reveal>
-          <Etiqueta claro>{t('eyebrow')}</Etiqueta>
-          <SectionTitle claro className="mt-6">
+          <SectionTitle claro>
             {t('title')}
           </SectionTitle>
           <p className="measure mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
@@ -136,7 +133,7 @@ export function GlobalReach() {
         <span className="mx-auto grid size-14 place-items-center rounded-xl bg-tag/12 text-tag">
           <GlobeHemisphereWest size={28} weight="duotone" />
         </span>
-        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+        <SectionTitle>{t('title')}</SectionTitle>
         <p className="measure mx-auto mt-5 text-base leading-relaxed text-mist-soft sm:text-lg">
           {t('text')}
         </p>
@@ -154,11 +151,7 @@ export function Aircraft() {
   return (
     <Section tom="paper">
       <Reveal className="max-w-3xl">
-        <Etiqueta claro>
-          <Airplane size={15} weight="fill" />
-          {t('eyebrow')}
-        </Etiqueta>
-        <SectionTitle claro className="mt-6">
+        <SectionTitle claro>
           {t('title')}
         </SectionTitle>
         <p className="measure mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
@@ -217,8 +210,7 @@ export function Testimonials() {
   return (
     <Section>
       <Reveal className="max-w-2xl">
-        <Etiqueta>{t('eyebrow')}</Etiqueta>
-        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+        <SectionTitle>{t('title')}</SectionTitle>
       </Reveal>
 
       <div className="mt-12 grid gap-5 lg:grid-cols-3">

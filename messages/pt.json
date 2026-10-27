@@ -44,7 +44,6 @@
     "conditionsValue": "Peças novas, overhauled, repaired e serviceable"
   },
   "about": {
-    "eyebrow": "Quem somos",
     "title": "Sobre a Amazon Jet Aviation",
     "text1": "A Amazon Jet Aviation nasceu na Flórida, em julho de 2025, para conectar o mercado aeronáutico brasileiro à rede de fornecedores dos Estados Unidos. Começamos a operar em agosto de 2025.",
     "text2": "Nosso trabalho é encontrar a peça certa, comparar as opções e acompanhar a compra até a chegada ao Brasil, com segurança, transparência e atendimento especializado.",
@@ -52,7 +51,6 @@
     "subtext": "Somos uma equipe que mantém contato com fornecedores nos EUA. É essa conexão entre Brasil e Estados Unidos que sustenta o nosso trabalho."
   },
   "services": {
-    "eyebrow": "O que fazemos",
     "title": "O que fazemos",
     "intro": "Um ponto de contato para encontrar, comparar e comprar peças no mercado americano.",
     "items": [
@@ -81,7 +79,6 @@
     "ctaTitulo": "Mande o part number e a gente volta com a proposta."
   },
   "how": {
-    "eyebrow": "Passo a passo",
     "title": "Como funciona, do part number ao seu hangar",
     "steps": [
       {
@@ -130,7 +127,6 @@
     "support": "Atendimento de segunda a sexta, das 9h às 17h (horário da Flórida)."
   },
   "why": {
-    "eyebrow": "Diferenciais",
     "title": "Por que escolher a Amazon Jet Aviation",
     "items": [
       {
@@ -160,7 +156,6 @@
     ]
   },
   "docs": {
-    "eyebrow": "Documentação",
     "title": "O que acompanha cada peça",
     "text": "A documentação depende da origem, da condição e dos requisitos aplicáveis à peça. Dependendo do caso, pode incluir:",
     "items": [
@@ -177,7 +172,6 @@
     "text": "Nosso foco é a rota Estados Unidos e Brasil, e temos em vista ampliar as relações com outros mercados da América Latina. Cada operação internacional segue a legislação de exportação dos EUA, as regras de importação do país de destino e as restrições aplicáveis a produtos e destinatários."
   },
   "aircraft": {
-    "eyebrow": "Aeronaves",
     "title": "Aeronaves que atendemos",
     "text": "Atendemos demandas de aeronaves de asa fixa, de pistão, turboélice e jatos executivos, conforme a disponibilidade dos componentes e a nossa capacidade de fornecimento.",
     "typeHead": "Tipo",
@@ -202,7 +196,6 @@
     "makers": "Atendemos aeronaves Cessna, Beechcraft, Piper e Cirrus, entre outras."
   },
   "testimonials": {
-    "eyebrow": "Depoimentos",
     "title": "O que dizem os nossos clientes",
     "items": [
       {
@@ -244,7 +237,6 @@
     "cta": "Ler sobre a expedição"
   },
   "faq": {
-    "eyebrow": "Dúvidas",
     "title": "Perguntas frequentes",
     "seeAll": "Ver todas",
     "items": [
@@ -313,7 +305,6 @@
     "aog": "Acionar AOG"
   },
   "brands": {
-    "eyebrow": "Parcerias",
     "title": "Fabricantes e Distribuidores",
     "text": "Trabalhamos com a rede de fornecedores, fabricantes e distribuidores do mercado americano para encontrar a peça certa para a sua aeronave.",
     "aviso": "Marcas e modelos citados pertencem aos seus respectivos proprietários e servem para identificar aeronaves e peças."

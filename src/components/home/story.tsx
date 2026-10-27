@@ -25,7 +25,7 @@ type Icon = React.ComponentType<{
 }>;
 
 import { Link } from '@/i18n/navigation';
-import { Etiqueta, Reveal, Section, SectionTitle } from '@/components/section';
+import { Reveal, Section, SectionTitle } from '@/components/section';
 
 /* ------------------------------------------------------- faixa de fatos */
 
@@ -96,8 +96,7 @@ export function About() {
         </Reveal>
 
         <Reveal atraso={100}>
-          <Etiqueta>{t('eyebrow')}</Etiqueta>
-          <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+          <SectionTitle>{t('title')}</SectionTitle>
 
           <p className="measure mt-5 text-base leading-relaxed text-mist-soft sm:text-lg">
             {t('text1')}
@@ -131,8 +130,7 @@ export function Services() {
   return (
     <Section id="servicos" tom="night-2">
       <Reveal className="max-w-3xl">
-        <Etiqueta>{t('eyebrow')}</Etiqueta>
-        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+        <SectionTitle>{t('title')}</SectionTitle>
         <p className="measure mt-5 text-base leading-relaxed text-mist-soft sm:text-lg">
           {t('intro')}
         </p>
@@ -200,8 +198,7 @@ export function HowItWorks() {
   return (
     <Section id="como-funciona">
       <Reveal className="max-w-3xl">
-        <Etiqueta>{t('eyebrow')}</Etiqueta>
-        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+        <SectionTitle>{t('title')}</SectionTitle>
       </Reveal>
 
       {/* A linha que costura os passos existe porque isto é uma sequência

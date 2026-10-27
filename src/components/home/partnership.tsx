@@ -128,8 +128,7 @@ export function Brands() {
   return (
     <Section tom="night-2" className="overflow-hidden">
       <Reveal className="text-center">
-        <Etiqueta>{t('eyebrow')}</Etiqueta>
-        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+        <SectionTitle>{t('title')}</SectionTitle>
         <p className="measure mx-auto mt-4 text-base leading-relaxed text-mist-soft">
           {t('text')}
         </p>
