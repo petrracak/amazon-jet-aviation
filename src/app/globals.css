@@ -154,6 +154,85 @@
     border: 1px solid rgb(255 255 255 / 0.1);
   }
 
+  /*
+    Corpo do texto do blog. Medida curta, entrelinha generosa e hierarquia
+    clara: é a única parte do site feita para leitura longa.
+  */
+  .prosa {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-mist);
+  }
+
+  .prosa > * + * {
+    margin-top: 1.4em;
+  }
+
+  .prosa h2,
+  .prosa h3,
+  .prosa h4 {
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-top: 2.2em;
+  }
+
+  .prosa h2 {
+    font-size: 1.6rem;
+  }
+  .prosa h3 {
+    font-size: 1.3rem;
+  }
+  .prosa h4 {
+    font-size: 1.1rem;
+  }
+
+  .prosa strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .prosa a {
+    color: var(--color-tag);
+    text-underline-offset: 3px;
+    text-decoration: underline;
+  }
+
+  .prosa a:hover {
+    text-decoration: none;
+  }
+
+  .prosa ul,
+  .prosa ol {
+    padding-left: 1.3em;
+  }
+
+  .prosa ul {
+    list-style: disc;
+  }
+  .prosa ol {
+    list-style: decimal;
+  }
+
+  .prosa li::marker {
+    color: var(--color-tag);
+  }
+
+  .prosa li + li {
+    margin-top: 0.5em;
+  }
+
+  .prosa blockquote {
+    border-left: 3px solid var(--color-tag);
+    padding-left: 1.2em;
+    color: var(--color-mist-soft);
+    font-style: italic;
+  }
+
+  .prosa img {
+    border-radius: var(--radius-lg);
+  }
+
   /* Etiqueta de peça: o acento da marca. */
   .tag {
     display: inline-flex;

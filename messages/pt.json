@@ -318,6 +318,18 @@
     "text": "Trabalhamos com a rede de fornecedores, fabricantes e distribuidores do mercado americano para encontrar a peça certa para a sua aeronave.",
     "aviso": "Marcas e modelos citados pertencem aos seus respectivos proprietários e servem para identificar aeronaves e peças."
   },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Peças, importação e AOG, explicados por quem faz",
+    "description": "Artigos sobre peças aeronáuticas, importação, logística e AOG, da equipe da Amazon Jet Aviation.",
+    "ler": "Ler o texto",
+    "voltar": "Voltar ao blog",
+    "vazio": "Nenhum texto publicado ainda.",
+    "outros": "Outros textos",
+    "ctaTitulo": "Precisa de uma peça?",
+    "ctaTexto": "Mande o part number que a gente pesquisa a rede de fornecedores e volta com uma proposta clara.",
+    "ctaBotao": "Pedir cotação"
+  },
   "footer": {
     "tagline": "Sourcing e fornecimento de peças aeronáuticas dos EUA para o Brasil.",
     "contact": "Contato",
