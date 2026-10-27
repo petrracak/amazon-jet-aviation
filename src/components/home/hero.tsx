@@ -8,18 +8,16 @@ import { PartSearch } from '@/components/part-search';
 /**
  * Primeira dobra.
  *
- * Texto e arte não se sobrepõem em nenhum tamanho de tela: no computador
- * ficam lado a lado, no celular a arte vem em cima e o texto embaixo. Não
- * há véu nem sombra sobre o avião.
+ * A arte é o arquivo já recortado na medida do avião (864x738), e entra com
+ * largura e altura próprias, sem object-fit. Isso tira o enquadramento da
+ * conta: não existe janela que possa cortar asa, cauda ou a ponta da marca,
+ * em nenhuma largura de tela.
  *
- * O fundo da seção é exatamente o mesmo #0f1827 dos quatro cantos do
- * arquivo, então a borda da imagem desaparece e ela parece desenhada na
- * página. É isso que dispensa qualquer degradê de costura.
+ * O fundo da seção é o mesmo #0f1827 dos cantos do arquivo, então a borda
+ * da imagem desaparece e nenhum degradê de costura é preciso.
  *
- * O enquadramento vem medido do próprio arquivo: o avião ocupa de 46% a
- * 89% da largura e de 6% a 81% da altura, com centro em 68%/43%. É esse
- * ponto que o object-position persegue, para a arte chegar cheia ao
- * quadro em qualquer proporção.
+ * Texto e arte ficam em colunas separadas no computador e empilhados no
+ * celular, então um nunca cobre o outro.
  */
 export function Hero({ aogHref }: { aogHref: string }) {
   const t = useTranslations('hero');
@@ -27,19 +25,18 @@ export function Hero({ aogHref }: { aogHref: string }) {
   return (
     <section className="bg-hero">
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-24 sm:px-6 lg:pb-14 lg:pt-28">
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           {/* No celular a arte vem primeiro, logo abaixo do cabeçalho. */}
           <div className="order-1 lg:order-2">
-            <div className="relative aspect-[4/3] w-full lg:aspect-[5/4]">
-              <Image
-                src="/hero/hero-desktop.webp"
-                alt="Monomotor PS-BZR da Amazon Jet Aviation em voo, com as bandeiras dos Estados Unidos e do Brasil"
-                fill
-                priority
-                sizes="(min-width: 1024px) 52vw, 100vw"
-                className="object-cover object-[68%_43%]"
-              />
-            </div>
+            <Image
+              src="/hero/aviao.jpg"
+              alt="Monomotor PS-BZR da Amazon Jet Aviation em voo, com as bandeiras dos Estados Unidos e do Brasil"
+              width={864}
+              height={738}
+              priority
+              sizes="(min-width: 1024px) 480px, 100vw"
+              className="mx-auto h-auto w-full max-w-[420px] lg:mr-0 lg:max-w-[480px]"
+            />
           </div>
 
           <div className="order-2 lg:order-1">
@@ -48,7 +45,7 @@ export function Hero({ aogHref }: { aogHref: string }) {
               {t('eyebrow')}
             </p>
 
-            <h1 className="mt-5 font-display text-[clamp(1.9rem,4.4vw,3.1rem)] leading-[1.06] text-white">
+            <h1 className="mt-5 font-display text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] text-white">
               {t('title')}
             </h1>
 
@@ -88,9 +85,9 @@ export function Hero({ aogHref }: { aogHref: string }) {
           </div>
         </div>
 
-        {/* A busca fica abaixo das duas colunas: em evidência, e sem
-            encostar na arte. */}
-        <div className="glass mt-8 rounded-xl p-5 sm:p-6 lg:mt-10">
+        {/* A busca volta à largura que tinha: um painel contido, não uma
+            faixa de ponta a ponta. */}
+        <div className="glass mt-8 rounded-xl p-5 sm:p-6 lg:mt-10 lg:max-w-3xl">
           <PartSearch />
         </div>
       </div>
