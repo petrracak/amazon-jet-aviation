@@ -15,6 +15,9 @@
 @theme {
   /* Noite: a escada do fundo escuro, do mais fundo ao mais alto. */
   --color-night: #0a1524;
+  /* O fundo exato dos quatro cantos da arte do hero. Igualar os dois faz a
+     borda da imagem sumir, o que dispensa qualquer degradê de costura. */
+  --color-hero: #0f1827;
   --color-night-2: #0f1e31;
   --color-night-3: #16293f;
   --color-night-line: #1e3450;
