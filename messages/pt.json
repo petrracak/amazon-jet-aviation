@@ -169,7 +169,9 @@
   },
   "global": {
     "title": "Do mercado americano para o seu hangar",
-    "text": "Nosso foco é a rota Estados Unidos e Brasil, e temos em vista ampliar as relações com outros mercados da América Latina. Cada operação internacional segue a legislação de exportação dos EUA, as regras de importação do país de destino e as restrições aplicáveis a produtos e destinatários."
+    "text": "Nosso foco é a rota Estados Unidos e Brasil, e temos em vista ampliar as relações com outros mercados da América Latina. Cada operação internacional segue a legislação de exportação dos EUA, as regras de importação do país de destino e as restrições aplicáveis a produtos e destinatários.",
+    "origem": "Miami, FL",
+    "destino": "Brasil"
   },
   "aircraft": {
     "title": "Aeronaves que atendemos",

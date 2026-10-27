@@ -308,6 +308,61 @@
     }
   }
 
+  /* ------------------------------------------------ mapa da rota */
+
+  /* O tracejado corre no sentido da viagem, como um radar. */
+  @keyframes correr-traco {
+    to {
+      stroke-dashoffset: -48;
+    }
+  }
+
+  .rota-correndo {
+    animation: correr-traco 1.6s linear infinite;
+  }
+
+  /* O avião percorre o mesmo caminho da linha, pelo offset-path. */
+  @keyframes voar-rota {
+    0% {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    8%,
+    92% {
+      opacity: 1;
+    }
+    100% {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
+
+  .aviao-rota {
+    offset-rotate: auto;
+    animation: voar-rota 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+
+  @keyframes pulsar-ponto {
+    0% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    70% {
+      transform: scale(3.2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(3.2);
+      opacity: 0;
+    }
+  }
+
+  .ponto-pulso {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulsar-ponto 2.6s ease-out infinite;
+  }
+
   @keyframes marquee {
     from {
       transform: translateX(0);

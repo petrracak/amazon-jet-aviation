@@ -23,6 +23,7 @@ type Icon = React.ComponentType<{
 }>;
 
 import { Reveal, Section, SectionTitle } from '@/components/section';
+import { MapaRota } from '@/components/home/mapa-rota';
 
 /* ------------------------------------------------------- diferenciais */
 
@@ -129,15 +130,21 @@ export function GlobalReach() {
 
   return (
     <Section tom="night-2">
-      <Reveal className="mx-auto max-w-3xl text-center">
-        <span className="mx-auto grid size-14 place-items-center rounded-xl bg-tag/12 text-tag">
-          <GlobeHemisphereWest size={28} weight="duotone" />
-        </span>
-        <SectionTitle>{t('title')}</SectionTitle>
-        <p className="measure mx-auto mt-5 text-base leading-relaxed text-mist-soft sm:text-lg">
-          {t('text')}
-        </p>
-      </Reveal>
+      <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <Reveal>
+          <span className="grid size-14 place-items-center rounded-xl bg-tag/12 text-tag">
+            <GlobeHemisphereWest size={28} weight="duotone" />
+          </span>
+          <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+          <p className="measure mt-5 text-base leading-relaxed text-mist-soft sm:text-lg">
+            {t('text')}
+          </p>
+        </Reveal>
+
+        <Reveal atraso={120}>
+          <MapaRota origem={t('origem')} destino={t('destino')} />
+        </Reveal>
+      </div>
     </Section>
   );
 }

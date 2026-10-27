@@ -31,29 +31,20 @@ export function Hero({ aogHref }: { aogHref: string }) {
   return (
     <section className="relative isolate overflow-hidden bg-hero">
       {/*
-        Duas versões do mesmo quadro: a ampla guarda as margens da
-        iluminação, que é o que tirou o corte seco em cima e embaixo; a
-        estreita é para o celular, onde a altura é curta e a margem só
-        roubaria espaço.
+        Um arquivo só, recortado com 3,5% de margem em volta do avião. É
+        margem suficiente para a iluminação morrer sozinha — o corte seco
+        que aparecia antes vinha do arquivo antigo, em que o brilho ainda
+        estava visível na borda.
       */}
       <div className="px-4 pt-6 sm:px-6 sm:pt-10 lg:pointer-events-none lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:px-0 lg:pt-0">
         <Image
           src="/hero/aviao.jpg"
           alt=""
-          width={1081}
-          height={935}
+          width={1047}
+          height={853}
           priority
-          sizes="300px"
-          className="mx-auto h-[165px] w-auto sm:h-[260px] lg:hidden"
-        />
-        <Image
-          src="/hero/aviao-amplo.jpg"
-          alt=""
-          width={1494}
-          height={1407}
-          priority
-          sizes="50vw"
-          className="hidden lg:absolute lg:inset-0 lg:block lg:h-full lg:w-full lg:object-contain"
+          sizes="(min-width: 1024px) 50vw, 300px"
+          className="mx-auto h-[165px] w-auto sm:h-[260px] lg:absolute lg:inset-0 lg:h-full lg:w-full lg:max-w-none lg:object-contain"
         />
       </div>
 
