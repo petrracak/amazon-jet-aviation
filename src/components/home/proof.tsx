@@ -1,184 +1,246 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
-import { Section, SectionTitle } from '@/components/section';
+import {
+  Airplane,
+  Barcode,
+  Certificate,
+  Eye,
+  FileText,
+  GlobeHemisphereWest,
+  Infinity as InfinityIcon,
+  Lightning,
+  Notebook,
+  Quotes,
+  SealCheck,
+  Translate,
+  UsersThree,
+} from '@phosphor-icons/react/dist/ssr';
+
+/** O que a entrada /ssr do Phosphor devolve: um componente de ícone. */
+type Icon = React.ComponentType<{
+  size?: number;
+  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
+  className?: string;
+}>;
+
+import { Etiqueta, Reveal, Section, SectionTitle } from '@/components/section';
+
+/* ------------------------------------------------------- diferenciais */
+
+const ICONES_DIFERENCIAIS: Icon[] = [
+  UsersThree,
+  InfinityIcon,
+  Lightning,
+  FileText,
+  Eye,
+  Translate,
+];
 
 export function WhyUs() {
   const t = useTranslations('why');
-  const items = t.raw('items') as { title: string; text: string }[];
-
-  return (
-    <Section tone="mist">
-      <SectionTitle className="max-w-2xl">{t('title')}</SectionTitle>
-
-      <div className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((item) => (
-          <div key={item.title} className="border-t border-ink/20 pt-5">
-            <h3 className="font-display text-lg leading-snug">{item.title}</h3>
-            <p className="mt-2 leading-relaxed text-ink-soft">{item.text}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-export function Documentation() {
-  const t = useTranslations('docs');
-  const items = t.raw('items') as string[];
+  const itens = t.raw('items') as { title: string; text: string }[];
 
   return (
     <Section>
-      <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
-        <div>
-          <SectionTitle>{t('title')}</SectionTitle>
-          <p className="measure mt-5 text-lg leading-relaxed text-ink-soft">
-            {t('text')}
-          </p>
-        </div>
+      <Reveal className="max-w-2xl">
+        <Etiqueta>{t('eyebrow')}</Etiqueta>
+        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+      </Reveal>
 
-        <div>
-          <ul className="divide-y divide-mist-deep border-y border-mist-deep">
-            {items.map((item) => (
-              <li key={item} className="flex items-center gap-4 py-4">
-                <span
-                  aria-hidden="true"
-                  className="h-2.5 w-2.5 shrink-0 bg-tag"
-                />
-                <span className="font-medium">{item}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="measure mt-6 text-sm leading-relaxed text-ink-soft">
-            {t('closing')}
-          </p>
-        </div>
+      <div className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
+        {itens.map((item, i) => {
+          const Icone = ICONES_DIFERENCIAIS[i] ?? UsersThree;
+          return (
+            <Reveal key={item.title} atraso={i * 60} className="group flex gap-4">
+              <span className="grid size-11 shrink-0 place-items-center rounded-md bg-white/[0.06] text-tag transition-all duration-300 group-hover:bg-tag group-hover:text-night">
+                <Icone size={22} weight="duotone" />
+              </span>
+              <div className="min-w-0">
+                <h3 className="font-display text-lg leading-snug text-white">{item.title}</h3>
+                <p className="mt-2 leading-relaxed text-mist-soft">{item.text}</p>
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
     </Section>
   );
 }
+
+/* ------------------------------------------------- documentação (claro) */
+
+const ICONES_DOCS: Icon[] = [Certificate, SealCheck, FileText, Barcode, Notebook];
+
+export function Documentation() {
+  const t = useTranslations('docs');
+  const itens = t.raw('items') as string[];
+
+  return (
+    <Section tom="paper">
+      <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+        <Reveal>
+          <Etiqueta claro>{t('eyebrow')}</Etiqueta>
+          <SectionTitle claro className="mt-6">
+            {t('title')}
+          </SectionTitle>
+          <p className="measure mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
+            {t('text')}
+          </p>
+
+          <ul className="mt-8 grid gap-3">
+            {itens.map((item, i) => {
+              const Icone = ICONES_DOCS[i] ?? Certificate;
+              return (
+                <li
+                  key={item}
+                  className="group flex items-center gap-3 rounded-md border border-paper-2 bg-white px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-tag"
+                >
+                  <Icone
+                    size={22}
+                    weight="duotone"
+                    className="shrink-0 text-tag transition-transform group-hover:scale-110"
+                  />
+                  <span className="font-medium text-ink">{item}</span>
+                </li>
+              );
+            })}
+          </ul>
+
+          <p className="measure mt-6 text-sm leading-relaxed text-ink-soft">{t('closing')}</p>
+        </Reveal>
+
+        <Reveal atraso={100}>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-[0_30px_80px_-40px_rgb(11_27_43/0.6)]">
+            <Image
+              src="/fotos/peca-etiqueta.jpg"
+              alt="Bomba de combustível com a etiqueta de identificação da peça"
+              fill
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+        </Reveal>
+      </div>
+    </Section>
+  );
+}
+
+/* --------------------------------------------------- atendimento global */
 
 export function GlobalReach() {
   const t = useTranslations('global');
 
   return (
-    <Section tone="mist">
-      <div className="max-w-3xl">
-        <SectionTitle>{t('title')}</SectionTitle>
-        <p className="measure mt-5 text-lg leading-relaxed text-ink-soft">
+    <Section tom="night-2">
+      <Reveal className="mx-auto max-w-3xl text-center">
+        <span className="mx-auto grid size-14 place-items-center rounded-xl bg-tag/12 text-tag">
+          <GlobeHemisphereWest size={28} weight="duotone" />
+        </span>
+        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+        <p className="measure mx-auto mt-5 text-base leading-relaxed text-mist-soft sm:text-lg">
           {t('text')}
         </p>
-      </div>
+      </Reveal>
     </Section>
   );
 }
+
+/* ----------------------------------------------------- aeronaves (claro) */
 
 export function Aircraft() {
   const t = useTranslations('aircraft');
-  const rows = t.raw('rows') as { type: string; models: string }[];
+  const linhas = t.raw('rows') as { type: string; models: string }[];
 
   return (
-    <Section>
-      <SectionTitle className="max-w-2xl">{t('title')}</SectionTitle>
-      <p className="measure mt-5 text-lg leading-relaxed text-ink-soft">
-        {t('text')}
-      </p>
+    <Section tom="paper">
+      <Reveal className="max-w-3xl">
+        <Etiqueta claro>
+          <Airplane size={15} weight="fill" />
+          {t('eyebrow')}
+        </Etiqueta>
+        <SectionTitle claro className="mt-6">
+          {t('title')}
+        </SectionTitle>
+        <p className="measure mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
+          {t('text')}
+        </p>
+      </Reveal>
 
-      {/* Dado tabular em tabela de verdade: a estrutura carrega a informação. */}
-      <table className="mt-10 w-full border-collapse text-left">
-        <thead>
-          <tr className="border-b-2 border-ink">
-            <th scope="col" className="w-48 py-3 pr-6 font-display text-sm">
-              {t('typeHead')}
-            </th>
-            <th scope="col" className="py-3 font-display text-sm">
-              {t('modelsHead')}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.type} className="border-b border-mist-deep">
-              <th scope="row" className="py-4 pr-6 font-medium">
-                {row.type}
+      <Reveal className="mt-10 overflow-hidden rounded-xl border border-paper-2 bg-white">
+        <table className="w-full border-collapse text-left">
+          <thead>
+            <tr className="border-b border-paper-2 bg-paper">
+              <th scope="col" className="w-48 px-5 py-4 font-display text-sm text-ink">
+                {t('typeHead')}
               </th>
-              <td className="py-4 text-ink-soft">{row.models}</td>
+              <th scope="col" className="px-5 py-4 font-display text-sm text-ink">
+                {t('modelsHead')}
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {linhas.map((linha) => (
+              <tr
+                key={linha.type}
+                className="border-b border-paper-2 transition-colors last:border-0 hover:bg-paper"
+              >
+                <th scope="row" className="px-5 py-4 font-medium text-ink">
+                  {linha.type}
+                </th>
+                <td className="px-5 py-4 text-ink-soft">{linha.models}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Reveal>
 
-      <div className="mt-10 grid gap-8 sm:grid-cols-2">
-        <div>
-          <h3 className="font-display text-base">{t('clientsTitle')}</h3>
+      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <Reveal className="rounded-lg border border-paper-2 bg-white p-5">
+          <h3 className="font-display text-base text-ink">{t('clientsTitle')}</h3>
           <p className="mt-2 leading-relaxed text-ink-soft">{t('clients')}</p>
-        </div>
-        <div>
-          <h3 className="font-display text-base">{t('makersTitle')}</h3>
+        </Reveal>
+        <Reveal atraso={80} className="rounded-lg border border-paper-2 bg-white p-5">
+          <h3 className="font-display text-base text-ink">{t('makersTitle')}</h3>
           <p className="mt-2 leading-relaxed text-ink-soft">{t('makers')}</p>
-        </div>
+        </Reveal>
       </div>
     </Section>
   );
 }
+
+/* ---------------------------------------------------------- depoimentos */
 
 export function Testimonials() {
   const t = useTranslations('testimonials');
-  const items = t.raw('items') as {
-    quote: string;
-    name: string;
-    role: string;
-  }[];
-
-  return (
-    <Section tone="mist">
-      <SectionTitle className="max-w-2xl">{t('title')}</SectionTitle>
-
-      <div className="mt-12 grid gap-10 lg:grid-cols-3">
-        {items.map((item) => (
-          <figure key={item.name} className="border-l-2 border-tag pl-6">
-            <blockquote className="text-lg leading-relaxed">
-              {item.quote}
-            </blockquote>
-            <figcaption className="mt-5 text-sm">
-              <span className="font-semibold">{item.name}</span>
-              <span className="block text-ink-soft">{item.role}</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-export function WorldTour() {
-  const t = useTranslations('world');
+  const itens = t.raw('items') as { quote: string; name: string; role: string }[];
 
   return (
     <Section>
-      <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <div className="relative aspect-[16/10] overflow-hidden bg-mist">
-          <Image
-            src="/blog/voltaaomundo.png"
-            alt="Expedição Volta ao Mundo 2026"
-            fill
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="object-cover"
-          />
-        </div>
+      <Reveal className="max-w-2xl">
+        <Etiqueta>{t('eyebrow')}</Etiqueta>
+        <SectionTitle className="mt-6">{t('title')}</SectionTitle>
+      </Reveal>
 
-        <div>
-          <SectionTitle>{t('title')}</SectionTitle>
-          <p className="measure mt-5 text-lg leading-relaxed text-ink-soft">
-            {t('text')}
-          </p>
-          <Link
-            href="/blog"
-            className="mt-7 inline-block border-2 border-ink px-5 py-2.5 font-semibold transition-colors hover:bg-ink hover:text-surface"
+      <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        {itens.map((item, i) => (
+          <Reveal
+            key={item.name}
+            atraso={i * 80}
+            as="figure"
+            className="group rounded-xl border border-white/10 bg-white/[0.035] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-tag/40"
           >
-            {t('cta')}
-          </Link>
-        </div>
+            <Quotes
+              size={30}
+              weight="fill"
+              className="text-tag/60 transition-transform duration-300 group-hover:scale-110"
+            />
+            <blockquote className="mt-4 leading-relaxed text-mist">{item.quote}</blockquote>
+            <figcaption className="mt-5 border-t border-white/10 pt-4 text-sm">
+              <span className="font-semibold text-white">{item.name}</span>
+              <span className="block text-mist-soft">{item.role}</span>
+            </figcaption>
+          </Reveal>
+        ))}
       </div>
     </Section>
   );

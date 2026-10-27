@@ -2,163 +2,166 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import {
+  ArrowRight,
+  CircleNotch,
+  MagnifyingGlass,
+  Plus,
+  Warning,
+} from '@phosphor-icons/react';
 import { Link } from '@/i18n/navigation';
 import { createClient } from '@/lib/supabase/client';
 import type { Part } from '@/lib/types';
 
-const EXAMPLES = ['LW-12417', 'REM40E', 'GTX-345'];
+const EXEMPLOS = ['LW-12417', 'REM40E', 'GTX-345'];
 
-export function PartSearch() {
+/**
+ * A busca por part number, que é a ação principal do site.
+ *
+ * Vive dentro do painel de vidro do hero: o campo é translúcido e o
+ * resultado abre logo abaixo, sem empurrar o resto da página.
+ */
+export function PartSearch({ compacto = false }: { compacto?: boolean }) {
   const t = useTranslations('hero');
   const ts = useTranslations('search');
   const inputId = useId();
 
   const supabase = useMemo(() => createClient(), []);
-  const [term, setTerm] = useState('');
-  const [results, setResults] = useState<Part[] | null>(null);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
-  const requestRef = useRef(0);
+  const [termo, setTermo] = useState('');
+  const [resultados, setResultados] = useState<Part[] | null>(null);
+  const [estado, setEstado] = useState<'parado' | 'buscando' | 'erro'>('parado');
+  const pedido = useRef(0);
 
   useEffect(() => {
-    const query = term.trim();
-    if (query.length < 2) {
-      setResults(null);
-      setStatus('idle');
+    const consulta = termo.trim();
+    if (consulta.length < 2) {
+      setResultados(null);
+      setEstado('parado');
       return;
     }
 
-    const ticket = ++requestRef.current;
-    setStatus('loading');
+    const senha = ++pedido.current;
+    setEstado('buscando');
 
     const timer = setTimeout(async () => {
       // O índice é trigrama, então ilike com % nas duas pontas usa o índice
       // e encontra o part number mesmo digitado pela metade.
-      const pattern = `%${query.replace(/[%_]/g, '')}%`;
+      const padrao = `%${consulta.replace(/[%_]/g, '')}%`;
       const { data, error } = await supabase
         .from('parts')
         .select('id, pn, name, description, manufacturer, category')
-        .or(`pn.ilike.${pattern},name.ilike.${pattern}`)
+        .or(`pn.ilike.${padrao},name.ilike.${padrao}`)
         .order('pn')
-        .limit(8);
+        .limit(6);
 
-      if (ticket !== requestRef.current) return;
+      if (senha !== pedido.current) return;
       if (error) {
-        setStatus('error');
-        setResults(null);
+        setEstado('erro');
+        setResultados(null);
         return;
       }
-      setStatus('idle');
-      setResults(data ?? []);
+      setEstado('parado');
+      setResultados(data ?? []);
     }, 220);
 
     return () => clearTimeout(timer);
-  }, [term, supabase]);
+  }, [termo, supabase]);
 
-  const trimmed = term.trim();
+  const limpo = termo.trim();
 
   return (
     <div className="w-full">
-      <label htmlFor={inputId} className="sr-only">
+      <label
+        htmlFor={inputId}
+        className="flex items-center gap-2 text-sm font-medium text-mist-soft"
+      >
+        <MagnifyingGlass size={16} weight="bold" className="text-tag" />
         {t('searchLabel')}
       </label>
 
-      {/*
-        Sem botão "Pesquisar": a busca responde enquanto a pessoa digita, e um
-        botão que não faz nada é uma promessa falsa. A lupa marca o campo.
-      */}
-      <div className="flex items-center gap-3 border-2 border-ink bg-surface px-4 focus-within:ring-2 focus-within:ring-signal focus-within:ring-offset-2">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          aria-hidden="true"
-          className="shrink-0 text-ink-soft"
-        >
-          <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.8" />
-          <path d="M13.5 13.5L18 18" stroke="currentColor" strokeWidth="1.8" />
-        </svg>
+      <div className="group relative mt-2.5 flex items-center gap-3 rounded-md border border-white/15 bg-white/[0.07] px-4 transition-colors focus-within:border-tag/60 focus-within:bg-white/[0.11]">
+        <MagnifyingGlass
+          size={20}
+          weight="regular"
+          className="shrink-0 text-mist-soft transition-colors group-focus-within:text-tag"
+        />
         <input
           id={inputId}
-          value={term}
-          onChange={(event) => setTerm(event.target.value)}
+          value={termo}
+          onChange={(e) => setTermo(e.target.value)}
           placeholder={t('searchPlaceholder')}
           autoComplete="off"
           spellCheck={false}
-          className="pn min-w-0 flex-1 bg-transparent py-4 text-base outline-none placeholder:font-sans placeholder:text-ink-soft sm:text-lg"
+          className="pn min-w-0 flex-1 bg-transparent py-4 text-base text-white outline-none placeholder:font-sans placeholder:text-mist-soft/70 sm:text-lg"
         />
+        {estado === 'buscando' ? (
+          <CircleNotch size={20} className="shrink-0 animate-spin text-tag" />
+        ) : null}
       </div>
 
-      <p className="mt-3 text-sm text-ink-soft">
-        {t('searchHint')}{' '}
-        {EXAMPLES.map((example, index) => (
-          <span key={example}>
-            {index > 0 && ', '}
-            <button
-              type="button"
-              onClick={() => setTerm(example)}
-              className="pn underline decoration-tag decoration-2 underline-offset-4 hover:text-ink"
-            >
-              {example}
-            </button>
-          </span>
+      <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-mist-soft">
+        {t('searchHint')}
+        {EXEMPLOS.map((exemplo) => (
+          <button
+            key={exemplo}
+            type="button"
+            onClick={() => setTermo(exemplo)}
+            className="pn rounded-sm border border-white/15 bg-white/5 px-2 py-1 text-xs text-mist transition-all hover:-translate-y-0.5 hover:border-tag/60 hover:text-tag"
+          >
+            {exemplo}
+          </button>
         ))}
       </p>
 
-      <div aria-live="polite" className="mt-5">
-        {status === 'loading' && trimmed.length >= 2 && (
-          <p className="text-sm text-ink-soft">{ts('searching')}</p>
-        )}
+      <div aria-live="polite" className={compacto ? 'mt-4' : 'mt-4'}>
+        {estado === 'erro' ? (
+          <p className="flex items-center gap-2 text-sm text-aog">
+            <Warning size={18} weight="fill" />
+            {ts('error')}
+          </p>
+        ) : null}
 
-        {status === 'error' && (
-          <p className="text-sm text-aog">{ts('error')}</p>
-        )}
-
-        {results && results.length > 0 && (
-          <>
-            <p className="sr-only">
-              {results.length === 1
-                ? ts('resultsOne')
-                : ts('resultsOther', { count: results.length })}
-            </p>
-            <ul className="divide-y divide-mist-deep border border-mist-deep bg-surface">
-              {results.map((part) => (
-                <li
-                  key={part.id}
-                  className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3"
+        {resultados && resultados.length > 0 ? (
+          <ul className="divide-y divide-white/10 overflow-hidden rounded-md border border-white/12 bg-night-2/80 backdrop-blur-xl">
+            {resultados.map((peca) => (
+              <li key={peca.id}>
+                <Link
+                  href={{ pathname: '/cotacao', query: { pn: peca.pn } }}
+                  className="group flex items-center gap-4 px-4 py-3 transition-colors hover:bg-white/[0.06]"
                 >
-                  <span className="pn w-32 shrink-0 font-medium">{part.pn}</span>
-                  <span className="min-w-0 flex-1 text-sm">
-                    {part.name}
-                    {part.manufacturer && (
-                      <span className="block text-xs text-ink-soft">
-                        {part.manufacturer}
-                      </span>
-                    )}
+                  <span className="pn w-32 shrink-0 text-sm font-medium text-tag">
+                    {peca.pn}
                   </span>
-                  <Link
-                    href={{ pathname: '/cotacao', query: { pn: part.pn } }}
-                    className="shrink-0 border border-ink px-3 py-1.5 text-sm font-medium transition-colors hover:bg-ink hover:text-surface"
-                  >
-                    {ts('add')}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm text-white">{peca.name}</span>
+                    {peca.manufacturer ? (
+                      <span className="block truncate text-xs text-mist-soft">
+                        {peca.manufacturer}
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-mist-soft transition-colors group-hover:text-tag">
+                    <Plus size={14} weight="bold" />
+                    <span className="hidden sm:inline">{ts('add')}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
 
-        {results && results.length === 0 && (
-          <div className="border-l-4 border-tag bg-tag-soft px-4 py-4">
-            <p className="measure text-sm text-ink">{ts('empty')}</p>
+        {resultados && resultados.length === 0 ? (
+          <div className="rounded-md border-l-[3px] border-tag bg-tag/10 px-4 py-4">
+            <p className="measure text-sm text-mist">{ts('empty')}</p>
             <Link
-              href={{ pathname: '/cotacao', query: { pn: trimmed } }}
-              className="mt-3 inline-block bg-ink px-4 py-2 text-sm font-semibold text-surface"
+              href={{ pathname: '/cotacao', query: { pn: limpo } }}
+              className="mt-3 inline-flex items-center gap-2 rounded-full bg-tag px-4 py-2 text-sm font-semibold text-night transition-transform hover:-translate-y-0.5"
             >
-              {ts('emptyAction', { pn: trimmed })}
+              {ts('emptyAction', { pn: limpo })}
+              <ArrowRight size={16} weight="bold" />
             </Link>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

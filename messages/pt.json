@@ -44,6 +44,7 @@
     "conditionsValue": "Peças novas, overhauled, repaired e serviceable"
   },
   "about": {
+    "eyebrow": "Quem somos",
     "title": "Sobre a Amazon Jet Aviation",
     "text1": "A Amazon Jet Aviation nasceu na Flórida, em julho de 2025, para conectar o mercado aeronáutico brasileiro à rede de fornecedores dos Estados Unidos. Começamos a operar em agosto de 2025.",
     "text2": "Nosso trabalho é encontrar a peça certa, comparar as opções e acompanhar a compra até a chegada ao Brasil, com segurança, transparência e atendimento especializado.",
@@ -51,6 +52,7 @@
     "subtext": "Somos uma equipe que mantém contato com fornecedores nos EUA. É essa conexão entre Brasil e Estados Unidos que sustenta o nosso trabalho."
   },
   "services": {
+    "eyebrow": "O que fazemos",
     "title": "O que fazemos",
     "intro": "Um ponto de contato para encontrar, comparar e comprar peças no mercado americano.",
     "items": [
@@ -75,9 +77,11 @@
         "text": "Operações de standard exchange e devolução de core, negociadas conforme as condições comerciais de cada caso."
       }
     ],
-    "cta": "Pedir cotação"
+    "cta": "Pedir cotação",
+    "ctaTitulo": "Mande o part number e a gente volta com a proposta."
   },
   "how": {
+    "eyebrow": "Passo a passo",
     "title": "Como funciona, do part number ao seu hangar",
     "steps": [
       {
@@ -126,6 +130,7 @@
     "support": "Atendimento de segunda a sexta, das 9h às 17h (horário da Flórida)."
   },
   "why": {
+    "eyebrow": "Diferenciais",
     "title": "Por que escolher a Amazon Jet Aviation",
     "items": [
       {
@@ -155,6 +160,7 @@
     ]
   },
   "docs": {
+    "eyebrow": "Documentação",
     "title": "O que acompanha cada peça",
     "text": "A documentação depende da origem, da condição e dos requisitos aplicáveis à peça. Dependendo do caso, pode incluir:",
     "items": [
@@ -171,6 +177,7 @@
     "text": "Nosso foco é a rota Estados Unidos e Brasil, e temos em vista ampliar as relações com outros mercados da América Latina. Cada operação internacional segue a legislação de exportação dos EUA, as regras de importação do país de destino e as restrições aplicáveis a produtos e destinatários."
   },
   "aircraft": {
+    "eyebrow": "Aeronaves",
     "title": "Aeronaves que atendemos",
     "text": "Atendemos demandas de aeronaves de asa fixa, de pistão, turboélice e jatos executivos, conforme a disponibilidade dos componentes e a nossa capacidade de fornecimento.",
     "typeHead": "Tipo",
@@ -195,6 +202,7 @@
     "makers": "Atendemos aeronaves Cessna, Beechcraft, Piper e Cirrus, entre outras."
   },
   "testimonials": {
+    "eyebrow": "Depoimentos",
     "title": "O que dizem os nossos clientes",
     "items": [
       {
@@ -215,11 +223,28 @@
     ]
   },
   "world": {
-    "title": "Patrocinadora oficial da Volta ao Mundo 2026",
-    "text": "O piloto Mário Jorge, o Comandante, lidera uma expedição por mais de 45 países, em cerca de 120 dias, a bordo de um monomotor. A Amazon Jet é patrocinadora oficial da missão.",
+    "eyebrow": "Patrocinadora oficial",
+    "title": "Volta ao Mundo 2026, com o Comandante Mário Jorge",
+    "text": "O piloto Mário Jorge, o Comandante, lidera uma expedição por mais de 45 países, em cerca de 120 dias, a bordo de um monomotor. A Amazon Jet é patrocinadora oficial da missão e cuida das peças que mantêm a aeronave voando.",
+    "numeros": [
+      {
+        "valor": "45+",
+        "rotulo": "países no roteiro"
+      },
+      {
+        "valor": "120",
+        "rotulo": "dias de expedição"
+      },
+      {
+        "valor": "1",
+        "rotulo": "monomotor"
+      }
+    ],
+    "legenda": "Comandante Mário Jorge e a marca da Amazon Jet Aviation na asa.",
     "cta": "Ler sobre a expedição"
   },
   "faq": {
+    "eyebrow": "Dúvidas",
     "title": "Perguntas frequentes",
     "seeAll": "Ver todas",
     "items": [
@@ -274,6 +299,24 @@
     "text": "A gente pesquisa a rede, compara as opções e volta com uma proposta clara.",
     "primary": "Pedir cotação",
     "secondary": "Falar no WhatsApp"
+  },
+  "aogPopup": {
+    "title": "Sua aeronave está no solo?",
+    "text": "Se a aeronave está parada, o seu pedido entra na frente. Chame no WhatsApp com o modelo, a peça e o part number que a gente aciona a rede de fornecedores agora.",
+    "urgent": "Sim, preciso de prioridade",
+    "browse": "Não, quero conhecer o site",
+    "hours": "Atendimento de segunda a sexta, das 9h às 17h (horário da Flórida).",
+    "close": "Fechar"
+  },
+  "flutuante": {
+    "whatsapp": "Falar no WhatsApp",
+    "aog": "Acionar AOG"
+  },
+  "brands": {
+    "eyebrow": "Parcerias",
+    "title": "Fabricantes e Distribuidores",
+    "text": "Trabalhamos com a rede de fornecedores, fabricantes e distribuidores do mercado americano para encontrar a peça certa para a sua aeronave.",
+    "aviso": "Marcas e modelos citados pertencem aos seus respectivos proprietários e servem para identificar aeronaves e peças."
   },
   "footer": {
     "tagline": "Sourcing e fornecimento de peças aeronáuticas dos EUA para o Brasil.",

@@ -6,7 +6,8 @@ import { routing } from '@/i18n/routing';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { Pixels } from '@/components/site/pixels';
-import { linkAog } from '@/lib/contact';
+import { FloatingActions } from '@/components/site/floating-actions';
+import { linkAog, linkWhatsApp } from '@/lib/contact';
 import { classeFontes } from '@/lib/fonts';
 import { getConfig } from '@/lib/settings';
 import '../globals.css';
@@ -52,6 +53,10 @@ export default async function LocaleLayout({
             {children}
           </main>
           <SiteFooter contato={contato} />
+          <FloatingActions
+            whatsappHref={linkWhatsApp(contato, mensagens)}
+            aogHref={linkAog(contato, mensagens)}
+          />
         </NextIntlClientProvider>
         <Pixels pixels={pixels} />
       </body>
