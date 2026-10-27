@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { locales } from '@/i18n/routing';
+import { BrandLogo } from '@/components/brand-logo';
 
 const localeNames: Record<string, string> = { pt: 'PT', en: 'EN', es: 'ES' };
 
@@ -24,16 +24,7 @@ export function SiteHeader({ aogHref }: { aogHref: string }) {
   return (
     <header className="sticky top-0 z-40 bg-ink text-surface">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
-        <Link href="/" className="shrink-0" aria-label="Amazon Jet Aviation">
-          <Image
-            src="/brand/logo-wordmark-white.png"
-            alt="Amazon Jet Aviation"
-            width={160}
-            height={45}
-            priority
-            className="h-7 w-auto"
-          />
-        </Link>
+        <BrandLogo href="/" tamanho="md" />
 
         <nav className="hidden flex-1 items-center gap-6 text-sm lg:flex">
           {links.map((link) => (

@@ -111,7 +111,7 @@ function Lateral({
   return (
     <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-border-base bg-bg-elevated lg:flex">
       <div className="px-6 pb-4 pt-7">
-        <BrandLogo href="/admin" tamanho="md" inverterNoClaro />
+        <BrandLogo href="/admin" tamanho="md" tom="auto" />
       </div>
 
       <nav aria-label="Principal" className="flex-1 space-y-6 overflow-y-auto px-3 py-2">
@@ -180,7 +180,7 @@ function BarraTopo({ perfil }: { perfil: PerfilCurto }) {
   return (
     <header className="sticky top-0 z-30 border-b border-border-base bg-bg/90 pt-[env(safe-area-inset-top)] backdrop-blur-xl lg:hidden">
       <div className="flex h-14 items-center justify-between px-4">
-        <BrandLogo href="/admin" tamanho="sm" inverterNoClaro />
+        <BrandLogo href="/admin" tamanho="sm" tom="auto" />
         <Link
           href="/admin/conta"
           aria-label="Minha conta"

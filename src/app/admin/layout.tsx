@@ -11,6 +11,9 @@ import '../globals.css';
 export const metadata: Metadata = {
   title: { default: 'Painel', template: '%s | Painel Amazon Jet' },
   robots: { index: false, follow: false },
+  // O manifesto mora aqui, e não no site: quem instalar a partir do painel
+  // precisa abrir em /admin, não na home.
+  manifest: '/painel.webmanifest',
   appleWebApp: { capable: true, title: 'Painel', statusBarStyle: 'default' },
 };
 
