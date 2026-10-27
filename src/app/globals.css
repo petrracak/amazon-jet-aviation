@@ -321,14 +321,21 @@
     animation: correr-traco 1.6s linear infinite;
   }
 
+  /* A malha de pontos, aplicada na seção inteira para o mapa não ficar
+     preso dentro de um quadrado. */
+  .malha-pontos {
+    background-image: radial-gradient(rgb(221 230 242 / 0.13) 1.5px, transparent 1.5px);
+    background-size: 26px 26px;
+  }
+
   /* O avião percorre o mesmo caminho da linha, pelo offset-path. */
   @keyframes voar-rota {
     0% {
       offset-distance: 0%;
       opacity: 0;
     }
-    8%,
-    92% {
+    7%,
+    93% {
       opacity: 1;
     }
     100% {
@@ -339,7 +346,27 @@
 
   .aviao-rota {
     offset-rotate: auto;
-    animation: voar-rota 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    animation: voar-rota 7s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  }
+
+  /* Decola crescendo e chega diminuindo, como quem se afasta e pousa. */
+  @keyframes escala-voo {
+    0% {
+      transform: scale(0.5);
+    }
+    22%,
+    68% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.5);
+    }
+  }
+
+  .aviao-escala {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: escala-voo 7s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   }
 
   @keyframes pulsar-ponto {

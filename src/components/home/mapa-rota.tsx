@@ -6,10 +6,13 @@ import { BRASIL, DESTINO, EUA, ORIGEM, VIEW_BOX } from './mapa-paths';
  * Os contornos dos dois países vêm do Natural Earth, domínio público, já
  * projetados em Mercator e gravados como texto em `mapa-paths.ts` por
  * `scripts/gerar-mapa.mjs`. Em produção não entra biblioteca de mapas
- * nenhuma: é um SVG e duas regras de CSS.
+ * nenhuma: é um SVG e algumas regras de CSS.
  *
  * Miami e Brasília estão nas coordenadas reais delas, projetadas pelo mesmo
  * cálculo — a rota desenhada é a rota de verdade.
+ *
+ * O SVG é transparente de propósito: a malha de pontos e o brilho ficam na
+ * seção, para não existir borda de quadro em volta do mapa.
  *
  * O avião anda pelo `offset-path`, que recebe exatamente o mesmo `d` da
  * linha, então os dois nunca saem de sincronia. Toda a animação é CSS, e o
@@ -20,32 +23,33 @@ const ROTA = `M ${ORIGEM.x} ${ORIGEM.y} C ${ORIGEM.x + 118} ${ORIGEM.y + 26} ${
   DESTINO.x + 42
 } ${DESTINO.y - 150} ${DESTINO.x} ${DESTINO.y}`;
 
-export function MapaRota({ origem, destino }: { origem: string; destino: string }) {
+/**
+ * Avião visto de cima, com o bico no sentido +x — que é para onde o
+ * `offset-rotate: auto` aponta. Desenhado em linhas retas: num tamanho de
+ * 30px na tela, silhueta firme lê melhor que curva.
+ */
+const AVIAO =
+  'M 20 0 L 7 -3.5 L -2 -13 L -7 -13 L -3 -4 L -11 -5 L -15 -10 L -19 -10 ' +
+  'L -17 -3 L -17 3 L -19 10 L -15 10 L -11 5 L -3 4 L -7 13 L -2 13 ' +
+  'L 7 3.5 Z';
+
+export function MapaRota({
+  origem,
+  destino,
+  className,
+}: {
+  origem: string;
+  destino: string;
+  className?: string;
+}) {
   return (
-    <svg
-      viewBox={VIEW_BOX}
-      role="img"
-      aria-label={`Mapa da rota de ${origem} até ${destino}`}
-      className="h-auto w-full"
-    >
+    <svg viewBox={VIEW_BOX} aria-hidden className={className ?? 'h-auto w-full'}>
       <defs>
-        <radialGradient id="brilho-rota" cx="52%" cy="48%" r="58%">
-          <stop offset="0%" stopColor="#3f87f5" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="#3f87f5" stopOpacity="0" />
-        </radialGradient>
-
-        <pattern id="malha-rota" width="26" height="26" patternUnits="userSpaceOnUse">
-          <circle cx="1.5" cy="1.5" r="1.5" fill="#dde6f2" opacity="0.12" />
-        </pattern>
-
         <linearGradient id="terra-rota" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#dde6f2" stopOpacity="0.17" />
           <stop offset="100%" stopColor="#dde6f2" stopOpacity="0.06" />
         </linearGradient>
       </defs>
-
-      <rect width="100%" height="100%" fill="url(#brilho-rota)" />
-      <rect width="100%" height="100%" fill="url(#malha-rota)" />
 
       <g
         fill="url(#terra-rota)"
@@ -74,15 +78,13 @@ export function MapaRota({ origem, destino }: { origem: string; destino: string 
       <Ponto {...ORIGEM} rotulo={origem} ancora="end" deslocamento={-14} />
       <Ponto {...DESTINO} rotulo={destino} ancora="start" deslocamento={16} />
 
-      {/* offset-rotate: auto faz o bico acompanhar a curva. */}
+      {/* Dois grupos: o de fora anda e gira pelo offset-path, o de dentro
+          só cresce e encolhe. Separar evita que uma transformação atropele
+          a outra. */}
       <g className="aviao-rota" style={{ offsetPath: `path("${ROTA}")` }}>
-        <path
-          d="M 14 0 L -10 -8 L -4 0 L -10 8 Z"
-          fill="#f0ad13"
-          stroke="#f0ad13"
-          strokeWidth="2.5"
-          strokeLinejoin="round"
-        />
+        <g className="aviao-escala">
+          <path d={AVIAO} fill="#f0ad13" />
+        </g>
       </g>
     </svg>
   );

@@ -129,9 +129,30 @@ export function GlobalReach() {
   const t = useTranslations('global');
 
   return (
-    <Section tom="night-2">
-      <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-        <Reveal>
+    /*
+      O mapa não mora numa caixa: a malha de pontos e o brilho cobrem a
+      dobra inteira, e o SVG entra por cima sem fundo próprio. Assim não
+      existe borda de quadro em volta dele.
+    */
+    <section className="relative isolate overflow-hidden bg-night-2">
+      <div aria-hidden className="malha-pontos absolute inset-0" />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(55rem_38rem_at_70%_50%,rgb(63_135_245/0.2),transparent_68%)]"
+      />
+
+      {/* No computador a arte ocupa a dobra de ponta a ponta, atrás do
+          texto; no celular ela desce para depois dele, no fluxo. */}
+      <div className="pointer-events-none absolute inset-y-12 right-0 hidden w-[66%] lg:block">
+        <MapaRota
+          origem={t('origem')}
+          destino={t('destino')}
+          className="h-full w-full"
+        />
+      </div>
+
+      <div className="relative mx-auto flex max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-24 lg:min-h-[42rem] lg:py-28">
+        <Reveal className="lg:w-[44%]">
           <span className="grid size-14 place-items-center rounded-xl bg-tag/12 text-tag">
             <GlobeHemisphereWest size={28} weight="duotone" />
           </span>
@@ -141,11 +162,11 @@ export function GlobalReach() {
           </p>
         </Reveal>
 
-        <Reveal atraso={120}>
+        <Reveal atraso={120} className="mt-10 lg:hidden">
           <MapaRota origem={t('origem')} destino={t('destino')} />
         </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }
 
