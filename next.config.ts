@@ -20,6 +20,16 @@ const LEGADO: Record<string, string> = {
 
 const nextConfig: NextConfig = {
   images: {
+    /*
+      Sem o otimizador da Vercel: a cota da conta está esgotada e ele passou
+      a devolver 402, o que quebrava toda imagem do site. Servimos os
+      arquivos como estão — por isso eles entram no repositório já
+      redimensionados e comprimidos.
+
+      Para voltar a otimizar, basta remover esta linha depois de resolver a
+      cota no plano da Vercel.
+    */
+    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'avvaovmpuoojoiodinow.supabase.co' },
     ],
