@@ -63,7 +63,7 @@ A expectativa é que a expedição gere uma forte repercussão nas redes sociais
 
 A VOLTA AO MUNDO 2026 simboliza algo maior: a capacidade da aviação brasileira de sonhar grande, operar globalmente e inspirar pessoas ao redor do mundo. E a Amazon Jet Aviation terá muito orgulho de fazer parte dessa história.
 
-Acompanhe os próximos capítulos dessa missão através da Amazon Jet Aviation e das redes oficiais de O Comandante.', '/fotos/comandante-retrato.jpg', (select id from public.categories where slug='noticias'), '2026-05-27T13:49:26-04:00', '/voltaaomundo/'),
+Acompanhe os próximos capítulos dessa missão através da Amazon Jet Aviation e das redes oficiais de O Comandante.', '/blog/voltaaomundo-capa.webp', (select id from public.categories where slug='noticias'), '2026-05-27T13:49:26-04:00', '/voltaaomundo/'),
   ('a-importancia-da-revisao-periodica-em-motores-turboelice', 'A Importância da Revisão Periódica em Motores Turboélice', 'A manutenção de aeronaves não é apenas uma exigência regulatória; é o pilar fundamental que garante a segurança, a eficiência e a longevidade da sua frota. Quando falamos…', 'A manutenção de aeronaves não é apenas uma exigência regulatória; é o pilar fundamental que garante a segurança, a eficiência e a longevidade da sua frota. Quando falamos de motores turboélice, como os renomados Pratt & Whitney Canada PT6A que equipam os Cessna Caravan e King Air, a atenção aos detalhes durante as revisões periódicas pode significar a diferença entre uma operação lucrativa e uma série de eventos AOG (Aircraft on Ground).
 
 ## O Coração da Aeronave

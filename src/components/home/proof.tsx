@@ -23,7 +23,7 @@ type Icon = React.ComponentType<{
 }>;
 
 import { Reveal, Section, SectionTitle } from '@/components/section';
-import { MapaRota } from '@/components/home/mapa-rota';
+import { GloboRota } from '@/components/home/globo-rota';
 
 /* ------------------------------------------------------- diferenciais */
 
@@ -141,17 +141,13 @@ export function GlobalReach() {
         className="absolute inset-0 bg-[radial-gradient(55rem_38rem_at_70%_50%,rgb(63_135_245/0.2),transparent_68%)]"
       />
 
-      {/* No computador a arte ocupa a dobra de ponta a ponta, atrás do
-          texto; no celular ela desce para depois dele, no fluxo. */}
-      <div className="pointer-events-none absolute inset-y-12 right-0 hidden w-[66%] lg:block">
-        <MapaRota
-          origem={t('origem')}
-          destino={t('destino')}
-          className="h-full w-full"
-        />
+      {/* No computador o globo encosta na borda e sai um pouco por ela,
+          atrás do texto; no celular ele desce para depois dele, no fluxo. */}
+      <div className="pointer-events-none absolute inset-y-4 right-[-9%] hidden aspect-square lg:block xl:right-[-4%]">
+        <GloboRota origem={t('origem')} destino={t('destino')} />
       </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-24 lg:min-h-[42rem] lg:py-28">
+      <div className="relative mx-auto flex max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-24 lg:min-h-[46rem] lg:py-28">
         <Reveal className="lg:w-[44%]">
           <span className="grid size-14 place-items-center rounded-xl bg-tag/12 text-tag">
             <GlobeHemisphereWest size={28} weight="duotone" />
@@ -162,8 +158,11 @@ export function GlobalReach() {
           </p>
         </Reveal>
 
-        <Reveal atraso={120} className="mt-10 lg:hidden">
-          <MapaRota origem={t('origem')} destino={t('destino')} />
+        {/* No celular o globo sangra pelas laterais: ocupar mais que a
+            largura do texto é o que dá a ele o peso que tinha na tela
+            grande. */}
+        <Reveal atraso={120} className="-mx-8 mt-12 aspect-square sm:-mx-12 lg:hidden">
+          <GloboRota origem={t('origem')} destino={t('destino')} />
         </Reveal>
       </div>
     </section>

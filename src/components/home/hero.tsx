@@ -31,17 +31,16 @@ export function Hero({ aogHref }: { aogHref: string }) {
   return (
     <section className="relative isolate overflow-hidden bg-hero">
       {/*
-        Um arquivo só, recortado com 3,5% de margem em volta do avião. É
-        margem suficiente para a iluminação morrer sozinha — o corte seco
-        que aparecia antes vinha do arquivo antigo, em que o brilho ainda
-        estava visível na borda.
+        A arte sem nuvens, recortada com 3,5% de margem em volta do avião.
+        A margem é o que faz a iluminação morrer sozinha, sem corte seco na
+        borda. O fundo é o mesmo #0f1827 da seção, medido no arquivo.
       */}
       <div className="px-4 pt-6 sm:px-6 sm:pt-10 lg:pointer-events-none lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:px-0 lg:pt-0">
         <Image
-          src="/hero/aviao.jpg"
+          src="/hero/aviao.webp"
           alt=""
-          width={1047}
-          height={853}
+          width={1000}
+          height={824}
           priority
           sizes="(min-width: 1024px) 50vw, 300px"
           className="mx-auto h-[165px] w-auto sm:h-[260px] lg:absolute lg:inset-0 lg:h-full lg:w-full lg:max-w-none lg:object-contain"
