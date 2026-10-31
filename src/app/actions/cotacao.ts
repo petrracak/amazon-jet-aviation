@@ -1,5 +1,8 @@
 'use server';
 
+import { after } from 'next/server';
+
+import { avisarCotacao } from '@/lib/notificacao';
 import { createClient } from '@/lib/supabase/server';
 
 /**
@@ -86,6 +89,23 @@ export async function enviarCotacao(dados: DadosCotacao): Promise<RespostaCotaca
     console.error('cotação não gravada', error);
     return { ok: false, erro: 'envio' };
   }
+
+  // Depois da resposta: quem pediu a cotação não espera o WhatsApp da
+  // equipe, e um aviso que falhe não pode virar erro numa cotação que já
+  // está gravada.
+  after(() =>
+    avisarCotacao({
+      ref: data,
+      nome: nome,
+      empresa: dados.empresa?.trim() || null,
+      email,
+      telefone,
+      aeronave,
+      destino: dados.destino?.trim() || null,
+      aog: Boolean(dados.aog),
+      itens: itens.map(({ pn, quantity }) => ({ pn, quantity })),
+    }),
+  );
 
   return { ok: true, ref: data };
 }
