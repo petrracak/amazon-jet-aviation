@@ -23,7 +23,7 @@ type Icon = React.ComponentType<{
 }>;
 
 import { Reveal, Section, SectionTitle } from '@/components/section';
-import { GloboRota } from '@/components/home/globo-rota';
+import { GloboVivo } from '@/components/home/globo-vivo';
 
 /* ------------------------------------------------------- diferenciais */
 
@@ -143,8 +143,12 @@ export function GlobalReach() {
 
       {/* No computador o globo encosta na borda e sai um pouco por ela,
           atrás do texto; no celular ele desce para depois dele, no fluxo. */}
-      <div className="pointer-events-none absolute inset-y-4 right-[-9%] hidden aspect-square lg:block xl:right-[-4%]">
-        <GloboRota origem={t('origem')} destino={t('destino')} />
+      {/* A sangria é em rem, não em porcentagem: o globo é medido pela
+          altura da dobra e não cresce com a largura da tela, então uma
+          sangria proporcional iria empurrando o marcador do Brasil para
+          fora da borda quanto mais larga a tela. */}
+      <div className="pointer-events-none absolute inset-y-4 right-[-7rem] hidden aspect-square lg:block">
+        <GloboVivo origem={t('origem')} destino={t('destino')} />
       </div>
 
       <div className="relative mx-auto flex max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-24 lg:min-h-[46rem] lg:py-28">
@@ -161,8 +165,8 @@ export function GlobalReach() {
         {/* No celular o globo sangra pelas laterais: ocupar mais que a
             largura do texto é o que dá a ele o peso que tinha na tela
             grande. */}
-        <Reveal atraso={120} className="-mx-8 mt-12 aspect-square sm:-mx-12 lg:hidden">
-          <GloboRota origem={t('origem')} destino={t('destino')} />
+        <Reveal atraso={120} className="-mx-8 mt-12 sm:-mx-12 lg:hidden">
+          <GloboVivo origem={t('origem')} destino={t('destino')} />
         </Reveal>
       </div>
     </section>
