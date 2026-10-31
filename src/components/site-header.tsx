@@ -5,8 +5,13 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { locales } from '@/i18n/routing';
 import { BrandLogo } from '@/components/brand-logo';
+import { Bandeira } from '@/components/bandeira';
 
-const localeNames: Record<string, string> = { pt: 'PT', en: 'EN', es: 'ES' };
+const nomeDoIdioma: Record<string, string> = {
+  pt: 'Português',
+  en: 'English',
+  es: 'Español',
+};
 
 export function SiteHeader({ aogHref }: { aogHref: string }) {
   const t = useTranslations('nav');
@@ -39,20 +44,22 @@ export function SiteHeader({ aogHref }: { aogHref: string }) {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <ul className="hidden items-center gap-1 text-xs sm:flex" aria-label={t('language')}>
+          <ul className="hidden items-center gap-1 sm:flex" aria-label={t('language')}>
             {locales.map((l) => (
               <li key={l}>
                 <Link
                   href={pathname}
                   locale={l}
+                  title={nomeDoIdioma[l]}
                   aria-current={l === locale ? 'true' : undefined}
                   className={
                     l === locale
-                      ? 'px-1.5 py-1 font-semibold text-tag'
-                      : 'px-1.5 py-1 text-white/55 transition-colors hover:text-white'
+                      ? 'block rounded-sm p-1.5 text-white ring-1 ring-tag'
+                      : 'block rounded-sm p-1.5 text-white/40 opacity-60 transition-opacity hover:opacity-100'
                   }
                 >
-                  {localeNames[l]}
+                  <Bandeira pais={l} />
+                  <span className="sr-only">{nomeDoIdioma[l]}</span>
                 </Link>
               </li>
             ))}
@@ -119,16 +126,22 @@ export function SiteHeader({ aogHref }: { aogHref: string }) {
               </li>
             ))}
           </ul>
-          <ul className="mt-4 flex gap-3 text-sm" aria-label={t('language')}>
+          <ul className="mt-4 flex gap-2 text-sm" aria-label={t('language')}>
             {locales.map((l) => (
               <li key={l}>
                 <Link
                   href={pathname}
                   locale={l}
                   onClick={() => setOpen(false)}
-                  className={l === locale ? 'font-semibold text-tag' : 'text-white/60'}
+                  aria-current={l === locale ? 'true' : undefined}
+                  className={
+                    l === locale
+                      ? 'flex items-center gap-2 rounded-md px-2.5 py-2 text-white ring-1 ring-tag'
+                      : 'flex items-center gap-2 rounded-md px-2.5 py-2 text-white/60'
+                  }
                 >
-                  {localeNames[l]}
+                  <Bandeira pais={l} />
+                  {nomeDoIdioma[l]}
                 </Link>
               </li>
             ))}
