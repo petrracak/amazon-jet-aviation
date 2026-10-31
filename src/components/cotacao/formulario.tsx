@@ -17,6 +17,7 @@ import {
 
 import { enviarCotacao, type ItemCotacao } from '@/app/actions/cotacao';
 import { Link } from '@/i18n/navigation';
+import { whatsappUrl } from '@/lib/contact';
 import { createClient } from '@/lib/supabase/client';
 import { cn } from '@/lib/utils';
 import type { Part } from '@/lib/types';
@@ -54,19 +55,23 @@ const campo =
 
 export function FormularioCotacao({
   pnInicial,
-  whatsappHref,
-  aogHref,
+  whatsappNumero,
+  textoPadrao,
+  textoAog,
 }: {
   pnInicial?: string;
-  whatsappHref: string;
-  aogHref: string;
+  whatsappNumero: string;
+  textoPadrao: string;
+  textoAog: string;
 }) {
   const t = useTranslations('quote');
   const locale = useLocale();
   const supabase = useMemo(() => createClient(), []);
 
   const [itens, setItens] = useState<ItemCotacao[]>([]);
-  const [enviado, setEnviado] = useState<{ ref: string; aog: boolean } | null>(null);
+  const [enviado, setEnviado] = useState<{ ref: string; aog: boolean; href: string } | null>(
+    null,
+  );
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<'campos' | 'itens' | 'envio' | null>(null);
 
@@ -154,8 +159,30 @@ export function FormularioCotacao({
     });
 
     setEnviando(false);
-    if (resposta.ok) setEnviado({ ref: resposta.ref, aog: form.aog });
-    else setErro(resposta.erro);
+    if (!resposta.ok) {
+      setErro(resposta.erro);
+      return;
+    }
+
+    // O botão de WhatsApp da confirmação já sai com a cotação escrita:
+    // quem acabou de preencher o formulário não vai digitar tudo de novo,
+    // e do outro lado a conversa começa com o pedido na frente.
+    const resumo = [
+      form.aog ? textoAog : textoPadrao,
+      '',
+      t('successRef', { ref: resposta.ref }),
+      `${t('aircraftLabel')}: ${form.aeronave.trim()}`,
+      `${t('partsLabel')}: ${itens.map((i) => `${i.quantity}x ${i.pn}`).join(', ')}`,
+      form.destino.trim() ? `${t('destinationLabel')}: ${form.destino.trim()}` : null,
+    ]
+      .filter((linha) => linha !== null)
+      .join('\n');
+
+    setEnviado({
+      ref: resposta.ref,
+      aog: form.aog,
+      href: whatsappUrl(whatsappNumero, resumo),
+    });
   }
 
   if (enviado) {
@@ -163,7 +190,7 @@ export function FormularioCotacao({
       <Confirmacao
         ref_={enviado.ref}
         aog={enviado.aog}
-        whatsappHref={enviado.aog ? aogHref : whatsappHref}
+        whatsappHref={enviado.href}
         aoRecomecar={() => {
           setItens([]);
           setForm({ ...VAZIO });

@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Package } from '@phosphor-icons/react/dist/ssr';
 
 import { FormularioCotacao } from '@/components/cotacao/formulario';
-import { linkAog, linkWhatsApp } from '@/lib/contact';
 import { getConfig } from '@/lib/settings';
 import { routing } from '@/i18n/routing';
 
@@ -64,8 +63,9 @@ export default async function QuotePage({
         <div className="mt-10 sm:mt-12">
           <FormularioCotacao
             pnInicial={pn}
-            whatsappHref={linkWhatsApp(contato, mensagens)}
-            aogHref={linkAog(contato, mensagens)}
+            whatsappNumero={contato.whatsapp}
+            textoPadrao={mensagens.whatsapp_padrao}
+            textoAog={mensagens.whatsapp_aog}
           />
         </div>
       </div>

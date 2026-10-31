@@ -109,6 +109,9 @@
     "successText": "We are already searching our supplier network. The answer goes to your email — or reach us on WhatsApp and we will move faster there.",
     "successAog": "AOG request logged. Message us on WhatsApp now so we can activate the network right away.",
     "successAgain": "Request another quote",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "partsLabel": "Parts",
+    "aircraftLabel": "Aircraft",
+    "destinationLabel": "Destination"
   }
 }

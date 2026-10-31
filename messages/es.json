@@ -109,6 +109,9 @@
     "successText": "Ya estamos buscando en la red de proveedores. La respuesta va a su correo — si prefiere, escríbanos por WhatsApp y lo adelantamos por ahí.",
     "successAog": "Pedido AOG registrado. Escríbanos por WhatsApp ahora para activar la red en el acto.",
     "successAgain": "Solicitar otra cotización",
-    "backHome": "Volver al inicio"
+    "backHome": "Volver al inicio",
+    "partsLabel": "Piezas",
+    "aircraftLabel": "Aeronave",
+    "destinationLabel": "Destino"
   }
 }

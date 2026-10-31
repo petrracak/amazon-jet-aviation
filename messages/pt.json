@@ -389,6 +389,9 @@
     "successText": "Já estamos pesquisando na rede de fornecedores. A resposta vai para o seu e-mail — se preferir, chame no WhatsApp que a gente adianta por lá.",
     "successAog": "Pedido AOG registrado. Chame no WhatsApp agora para acionarmos a rede na mesma hora.",
     "successAgain": "Pedir outra cotação",
-    "backHome": "Voltar para o início"
+    "backHome": "Voltar para o início",
+    "partsLabel": "Peças",
+    "aircraftLabel": "Aeronave",
+    "destinationLabel": "Destino"
   }
 }
