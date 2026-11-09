@@ -10,6 +10,7 @@ import {
   LogOut,
   Moon,
   Newspaper,
+  PackageSearch,
   PenLine,
   Settings,
   Sun,
@@ -39,6 +40,7 @@ type Item = { href: string; rotulo: string; icone: LucideIcon; admin?: boolean }
 const PRINCIPAIS: Item[] = [
   { href: '/admin', rotulo: 'Início', icone: House },
   { href: '/admin/cotacoes', rotulo: 'Cotações', icone: FileText },
+  { href: '/admin/pecas', rotulo: 'Peças', icone: PackageSearch },
   { href: '/admin/posts', rotulo: 'Blog', icone: Newspaper },
 ];
 

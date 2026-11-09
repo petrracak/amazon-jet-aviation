@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useId, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   ArrowRight,
@@ -10,8 +10,7 @@ import {
   Warning,
 } from '@phosphor-icons/react';
 import { Link } from '@/i18n/navigation';
-import { createClient } from '@/lib/supabase/client';
-import type { Part } from '@/lib/types';
+import { useBuscaPecas } from '@/lib/use-busca-pecas';
 
 const EXEMPLOS = ['LW-12417', 'REM40E', 'GTX-345'];
 
@@ -26,46 +25,8 @@ export function PartSearch({ compacto = false }: { compacto?: boolean }) {
   const ts = useTranslations('search');
   const inputId = useId();
 
-  const supabase = useMemo(() => createClient(), []);
   const [termo, setTermo] = useState('');
-  const [resultados, setResultados] = useState<Part[] | null>(null);
-  const [estado, setEstado] = useState<'parado' | 'buscando' | 'erro'>('parado');
-  const pedido = useRef(0);
-
-  useEffect(() => {
-    const consulta = termo.trim();
-    if (consulta.length < 2) {
-      setResultados(null);
-      setEstado('parado');
-      return;
-    }
-
-    const senha = ++pedido.current;
-    setEstado('buscando');
-
-    const timer = setTimeout(async () => {
-      // O índice é trigrama, então ilike com % nas duas pontas usa o índice
-      // e encontra o part number mesmo digitado pela metade.
-      const padrao = `%${consulta.replace(/[%_]/g, '')}%`;
-      const { data, error } = await supabase
-        .from('parts')
-        .select('id, pn, name, description, manufacturer, category')
-        .or(`pn.ilike.${padrao},name.ilike.${padrao}`)
-        .order('pn')
-        .limit(6);
-
-      if (senha !== pedido.current) return;
-      if (error) {
-        setEstado('erro');
-        setResultados(null);
-        return;
-      }
-      setEstado('parado');
-      setResultados(data ?? []);
-    }, 220);
-
-    return () => clearTimeout(timer);
-  }, [termo, supabase]);
+  const { resultados, estado } = useBuscaPecas(termo, 6);
 
   const limpo = termo.trim();
 

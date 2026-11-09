@@ -19,6 +19,7 @@ import { enviarCotacao, type ItemCotacao } from '@/app/actions/cotacao';
 import { Link } from '@/i18n/navigation';
 import { whatsappUrl } from '@/lib/contact';
 import { createClient } from '@/lib/supabase/client';
+import { useBuscaPecas } from '@/lib/use-busca-pecas';
 import { cn } from '@/lib/utils';
 import type { Part } from '@/lib/types';
 
@@ -420,47 +421,9 @@ function BuscaPeca({
 }) {
   const t = useTranslations('quote');
   const inputId = useId();
-  const supabase = useMemo(() => createClient(), []);
 
   const [termo, setTermo] = useState('');
-  const [resultados, setResultados] = useState<Part[] | null>(null);
-  const [estado, setEstado] = useState<'parado' | 'buscando' | 'erro'>('parado');
-  const pedido = useRef(0);
-
-  useEffect(() => {
-    const consulta = termo.trim();
-    if (consulta.length < 2) {
-      setResultados(null);
-      setEstado('parado');
-      return;
-    }
-
-    const senha = ++pedido.current;
-    setEstado('buscando');
-
-    const timer = setTimeout(async () => {
-      // O índice é trigrama, então ilike com % nas duas pontas usa o índice
-      // e encontra o part number mesmo digitado pela metade.
-      const padrao = `%${consulta.replace(/[%_]/g, '')}%`;
-      const { data, error } = await supabase
-        .from('parts')
-        .select('id, pn, name, description, manufacturer, category')
-        .or(`pn.ilike.${padrao},name.ilike.${padrao}`)
-        .order('pn')
-        .limit(8);
-
-      if (senha !== pedido.current) return;
-      if (error) {
-        setEstado('erro');
-        setResultados(null);
-        return;
-      }
-      setEstado('parado');
-      setResultados(data ?? []);
-    }, 220);
-
-    return () => clearTimeout(timer);
-  }, [termo, supabase]);
+  const { resultados, estado } = useBuscaPecas(termo, 8);
 
   const limpo = termo.trim();
 
