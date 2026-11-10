@@ -29,7 +29,19 @@ export type Identificacao = {
   aircraft: string | null;
 };
 
-const WORKER = 'https://super-violet-3308amazon-jet-ai.amazonjetaviation.workers.dev/';
+/**
+ * O endereço do identificador fica em variável de ambiente, não no código.
+ *
+ * Ele já aparece no JavaScript do site antigo, então não é segredo de
+ * verdade — mas o repositório é público, e endereço em repositório público
+ * é varrido por robô. Cada chamada roda na conta Cloudflare da empresa, e
+ * não há motivo para facilitar a vida de quem fosse abusar.
+ *
+ * Sem a variável, a identificação simplesmente não acontece: o visitante
+ * continua podendo pedir a cotação do part number que digitou, que é o que
+ * importa.
+ */
+const WORKER = process.env.IDENTIFICADOR_PN_URL;
 
 /** Abaixo disso o palpite não aparece para o visitante. */
 const CORTE = 50;
@@ -40,6 +52,8 @@ const texto = (v: unknown, max: number) =>
   typeof v === 'string' && v.trim() ? v.trim().slice(0, max) : null;
 
 export async function identificarPn(termo: string): Promise<Identificacao | null> {
+  if (!WORKER) return null;
+
   const pn = (termo ?? '').trim();
   // Descrição em palavras não é part number: mandar "bomba hidráulica"
   // para o identificador só rende palpite solto.
