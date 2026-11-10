@@ -33,7 +33,11 @@
     "emptyAction": "Request a quote for {pn}",
     "error": "The search failed. Please try again in a moment.",
     "emptyTitle": "We can quote that part number.",
-    "alsoAsk": "None of these? Request a quote for {pn}"
+    "alsoAsk": "None of these? Request a quote for {pn}",
+    "identifying": "Identifying the part number...",
+    "guessTitle": "By its format, this looks like:",
+    "guessNote": "Automatic identification from the number pattern, not yet verified. We confirm the part when we quote it.",
+    "guessAircraft": "Usually fitted to: {aviao}"
   },
   "facts": {
     "floridaLabel": "Florida",
@@ -115,6 +119,10 @@
     "partsLabel": "Parts",
     "aircraftLabel": "Aircraft",
     "destinationLabel": "Destination",
-    "alsoAdd": "None of these? Add {pn}"
+    "alsoAdd": "None of these? Add {pn}",
+    "identifying": "Identifying the part number...",
+    "guessTitle": "By its format, this looks like:",
+    "guessNote": "Automatic identification from the number pattern, not yet verified. We confirm the part when we quote it.",
+    "guessAircraft": "Usually fitted to: {aviao}"
   }
 }

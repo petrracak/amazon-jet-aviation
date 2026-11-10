@@ -33,7 +33,11 @@
     "emptyAction": "Pedir cotação de {pn}",
     "error": "A busca falhou. Tente de novo em instantes.",
     "emptyTitle": "A gente cota esse part number.",
-    "alsoAsk": "Não é nenhuma dessas? Peça a cotação de {pn}"
+    "alsoAsk": "Não é nenhuma dessas? Peça a cotação de {pn}",
+    "identifying": "Identificando o part number...",
+    "guessTitle": "Pelo formato, parece ser:",
+    "guessNote": "Identificação automática pelo padrão do número, ainda não conferida. A gente confirma a peça na cotação.",
+    "guessAircraft": "Costuma equipar: {aviao}"
   },
   "facts": {
     "floridaLabel": "Flórida",
@@ -395,6 +399,10 @@
     "partsLabel": "Peças",
     "aircraftLabel": "Aeronave",
     "destinationLabel": "Destino",
-    "alsoAdd": "Não é nenhuma dessas? Adicionar {pn}"
+    "alsoAdd": "Não é nenhuma dessas? Adicionar {pn}",
+    "identifying": "Identificando o part number...",
+    "guessTitle": "Pelo formato, parece ser:",
+    "guessNote": "Identificação automática pelo padrão do número, ainda não conferida. A gente confirma a peça na cotação.",
+    "guessAircraft": "Costuma equipar: {aviao}"
   }
 }

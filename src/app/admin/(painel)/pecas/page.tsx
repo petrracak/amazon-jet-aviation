@@ -1,4 +1,4 @@
-import { PackageSearch, SearchX } from 'lucide-react';
+import { Bot, PackageSearch, SearchX } from 'lucide-react';
 
 import { PartsImport } from '@/components/admin/parts-import';
 import { Cabecalho, Cartao, Pagina, Selo, Vazio } from '@/components/admin/ui';
@@ -16,7 +16,8 @@ export default async function Pecas() {
 
   const supabase = await createClient();
 
-  const [{ count: total }, { data: recentes }, { data: falhas }] = await Promise.all([
+  const [{ count: total }, { data: recentes }, { data: falhas }, { data: palpites }] =
+    await Promise.all([
     supabase.from('parts').select('id', { count: 'exact', head: true }).eq('is_active', true),
     supabase
       .from('parts')
@@ -28,6 +29,11 @@ export default async function Pecas() {
       .select('term, term_norm, created_at')
       .order('created_at', { ascending: false })
       .limit(300),
+    supabase
+      .from('part_identifications')
+      .select('pn_norm, pn, name, manufacturer, aircraft, created_at')
+      .order('created_at', { ascending: false })
+      .limit(25),
   ]);
 
   // Agrupar pelo part number sem pontuação: quem procurou "4004508-0001" e
@@ -74,6 +80,36 @@ export default async function Pecas() {
               </li>
             ))}
           </ul>
+        )}
+      </Cartao>
+
+      <Cartao
+        titulo="O que o site respondeu sozinho"
+        descricao="Quando o catálogo não tem a peça, o site identifica o part number pelo padrão do número e mostra como palpite, sem afirmar. A primeira resposta fica guardada para não variar. Vale conferir: o que estiver certo pode virar peça do catálogo."
+      >
+        {palpites && palpites.length > 0 ? (
+          <ul className="divide-y divide-border-base">
+            {palpites.map((p) => (
+              <li key={p.pn_norm} className="py-2.5 first:pt-0">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="font-mono text-sm text-accent">{p.pn}</span>
+                  <span className="min-w-0 flex-1 truncate text-sm">{p.name}</span>
+                  {p.manufacturer ? (
+                    <span className="text-xs text-fg-muted">{p.manufacturer}</span>
+                  ) : null}
+                </div>
+                {p.aircraft ? (
+                  <p className="mt-0.5 truncate text-xs text-fg-muted">{p.aircraft}</p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <Vazio
+            icone={Bot}
+            titulo="Nenhuma identificação ainda"
+            texto="Quando alguém buscar um part number que não está no catálogo, o palpite do site aparece aqui."
+          />
         )}
       </Cartao>
 

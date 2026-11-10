@@ -17,6 +17,7 @@ import {
 
 import { enviarCotacao, type ItemCotacao } from '@/app/actions/cotacao';
 import { Link } from '@/i18n/navigation';
+import { PecaIdentificada } from '@/components/peca-identificada';
 import { whatsappUrl } from '@/lib/contact';
 import { createClient } from '@/lib/supabase/client';
 import { useBuscaPecas } from '@/lib/use-busca-pecas';
@@ -423,7 +424,7 @@ function BuscaPeca({
   const inputId = useId();
 
   const [termo, setTermo] = useState('');
-  const { resultados, estado } = useBuscaPecas(termo, 8);
+  const { resultados, estado, identificacao, identificando } = useBuscaPecas(termo, 8);
 
   const limpo = termo.trim();
 
@@ -526,6 +527,14 @@ function BuscaPeca({
               <Plus size={16} weight="bold" />
               {t('addManual', { pn: limpo })}
             </button>
+
+            {identificando ? (
+              <p className="mt-3 flex items-center gap-2 text-sm text-mist-soft">
+                <CircleNotch size={14} className="animate-spin text-tag" />
+                {t('identifying')}
+              </p>
+            ) : null}
+            {identificacao ? <PecaIdentificada identificacao={identificacao} ns="quote" /> : null}
           </div>
         ) : null}
       </div>

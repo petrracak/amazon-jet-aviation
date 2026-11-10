@@ -11,6 +11,7 @@ import {
   Warning,
 } from '@phosphor-icons/react';
 import { Link } from '@/i18n/navigation';
+import { PecaIdentificada } from '@/components/peca-identificada';
 import { useBuscaPecas } from '@/lib/use-busca-pecas';
 
 /**
@@ -25,7 +26,7 @@ export function PartSearch({ compacto = false }: { compacto?: boolean }) {
   const inputId = useId();
 
   const [termo, setTermo] = useState('');
-  const { resultados, estado } = useBuscaPecas(termo, 6);
+  const { resultados, estado, identificacao, identificando } = useBuscaPecas(termo, 6);
 
   const limpo = termo.trim();
 
@@ -122,6 +123,14 @@ export function PartSearch({ compacto = false }: { compacto?: boolean }) {
               {ts('emptyAction', { pn: limpo })}
               <ArrowRight size={16} weight="bold" />
             </Link>
+
+            {identificando ? (
+              <p className="mt-3 flex items-center gap-2 text-sm text-mist-soft">
+                <CircleNotch size={14} className="animate-spin text-tag" />
+                {ts('identifying')}
+              </p>
+            ) : null}
+            {identificacao ? <PecaIdentificada identificacao={identificacao} ns="search" /> : null}
           </div>
         ) : null}
       </div>
