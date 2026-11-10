@@ -15,10 +15,10 @@
     "eyebrow": "Piezas aeronáuticas de EE. UU. para su hangar",
     "title": "Localizamos la pieza correcta en EE. UU. y coordinamos su llegada a su hangar.",
     "text": "Sourcing y suministro de piezas y componentes aeronáuticos, nuevos, overhauled, repaired y serviceable. Usted habla con un solo equipo y nosotros comparamos fuentes, documentación y plazos.",
-    "searchLabel": "Buscar pieza por part number o descripción",
-    "searchPlaceholder": "Escriba el part number o el nombre de la pieza",
+    "searchLabel": "Consulte un part number",
+    "searchPlaceholder": "Escriba el part number o describa la pieza",
     "searchButton": "Buscar",
-    "searchHint": "Pruebe",
+    "searchHint": "Con guion, con espacio o todo junto — lo entendemos igual.",
     "primary": "Pedir cotización",
     "secondary": "¿Aeronave en tierra? Activar AOG",
     "support": "Atención de lunes a viernes, de 9 a 17 h (hora de Florida). Los pedidos AOG tienen prioridad."
@@ -29,9 +29,11 @@
     "resultsOther": "{count} piezas encontradas",
     "add": "Añadir a la cotización",
     "added": "En la cotización",
-    "empty": "¿No está en el catálogo? Sin problema. Añada el part number manualmente y lo buscamos en nuestra red de proveedores.",
-    "emptyAction": "Pedir cotización de {pn}",
-    "error": "La búsqueda falló. Inténtelo de nuevo en un momento."
+    "empty": "Buscamos en nuestra red de proveedores en Estados Unidos y volvemos con disponibilidad, condición, documentación y plazo.",
+    "emptyAction": "Solicitar cotización de {pn}",
+    "error": "La búsqueda falló. Inténtelo de nuevo en un momento.",
+    "emptyTitle": "Cotizamos ese part number.",
+    "alsoAsk": "¿Ninguna de estas? Solicite la cotización de {pn}"
   },
   "facts": {
     "floridaLabel": "Florida",
@@ -64,13 +66,13 @@
     "searchStep": "Buscar la pieza",
     "searchLabel": "Part number o descripción de la pieza",
     "searchPlaceholder": "Ej.: LW-12417, bujía, bomba hidráulica",
-    "searchHint": "No hace falta que sea exacto: la búsqueda encuentra por parte del part number.",
+    "searchHint": "Con guion, con espacio o todo junto — lo entendemos igual.",
     "searching": "Buscando...",
     "searchError": "La búsqueda falló. Inténtelo de nuevo en unos instantes.",
     "add": "Agregar",
     "added": "Ya está en la cotización",
-    "notFound": "No encontramos ese part number en el catálogo. Sin problema: agréguelo igual y lo buscamos en la red de proveedores.",
-    "addManual": "Agregar {pn} igualmente",
+    "notFound": "Cotizamos ese part number. Agréguelo a la lista y lo buscamos en nuestra red de proveedores en Estados Unidos.",
+    "addManual": "Agregar {pn} a la cotización",
     "cartStep": "Su cotización",
     "cartCount": "{count, plural, =0 {ningún ítem} one {1 ítem} other {# ítems}}",
     "cartEmpty": "Todavía no hay ítems. Busque arriba por part number.",
@@ -112,6 +114,7 @@
     "backHome": "Volver al inicio",
     "partsLabel": "Piezas",
     "aircraftLabel": "Aeronave",
-    "destinationLabel": "Destino"
+    "destinationLabel": "Destino",
+    "alsoAdd": "¿Ninguna de estas? Agregar {pn}"
   }
 }

@@ -4,6 +4,7 @@ import { useId, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   ArrowRight,
+  CheckCircle,
   CircleNotch,
   MagnifyingGlass,
   Plus,
@@ -11,8 +12,6 @@ import {
 } from '@phosphor-icons/react';
 import { Link } from '@/i18n/navigation';
 import { useBuscaPecas } from '@/lib/use-busca-pecas';
-
-const EXEMPLOS = ['LW-12417', 'REM40E', 'GTX-345'];
 
 /**
  * A busca por part number, que é a ação principal do site.
@@ -60,19 +59,7 @@ export function PartSearch({ compacto = false }: { compacto?: boolean }) {
         ) : null}
       </div>
 
-      <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-mist-soft">
-        {t('searchHint')}
-        {EXEMPLOS.map((exemplo) => (
-          <button
-            key={exemplo}
-            type="button"
-            onClick={() => setTermo(exemplo)}
-            className="pn rounded-sm border border-white/15 bg-white/5 px-2 py-1 text-xs text-mist transition-all hover:-translate-y-0.5 hover:border-tag/60 hover:text-tag"
-          >
-            {exemplo}
-          </button>
-        ))}
-      </p>
+      <p className="mt-3 text-sm text-mist-soft">{t('searchHint')}</p>
 
       <div aria-live="polite" className={compacto ? 'mt-4' : 'mt-4'}>
         {estado === 'erro' ? (
@@ -111,9 +98,23 @@ export function PartSearch({ compacto = false }: { compacto?: boolean }) {
           </ul>
         ) : null}
 
+        {resultados && resultados.length > 0 ? (
+          <Link
+            href={{ pathname: '/cotacao', query: { pn: limpo } }}
+            className="mt-3 inline-flex items-center gap-1.5 text-sm text-mist-soft underline-offset-4 transition-colors hover:text-tag hover:underline"
+          >
+            {ts('alsoAsk', { pn: limpo })}
+            <ArrowRight size={14} weight="bold" />
+          </Link>
+        ) : null}
+
         {resultados && resultados.length === 0 ? (
           <div className="rounded-md border-l-[3px] border-tag bg-tag/10 px-4 py-4">
-            <p className="measure text-sm text-mist">{ts('empty')}</p>
+            <p className="flex items-center gap-2 text-sm font-semibold text-white">
+              <CheckCircle size={18} weight="fill" className="shrink-0 text-tag" />
+              {ts('emptyTitle')}
+            </p>
+            <p className="measure mt-1.5 text-sm text-mist-soft">{ts('empty')}</p>
             <Link
               href={{ pathname: '/cotacao', query: { pn: limpo } }}
               className="mt-3 inline-flex items-center gap-2 rounded-full bg-tag px-4 py-2 text-sm font-semibold text-night transition-transform hover:-translate-y-0.5"

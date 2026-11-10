@@ -15,10 +15,10 @@
     "eyebrow": "Aircraft parts from the US to your hangar in Brazil",
     "title": "We find the right part in the US and coordinate its way to your hangar.",
     "text": "Sourcing and supply of aircraft parts and components: new, overhauled, repaired and serviceable. You deal with one team, and we compare sources, paperwork and lead times for you.",
-    "searchLabel": "Search by part number or description",
-    "searchPlaceholder": "Enter the part number or part name",
+    "searchLabel": "Look up a part number",
+    "searchPlaceholder": "Type the part number or describe the part",
     "searchButton": "Search",
-    "searchHint": "Try",
+    "searchHint": "With dashes, with spaces or all together — we read it the same way.",
     "primary": "Request a quote",
     "secondary": "Aircraft on ground? Start AOG",
     "support": "Monday to Friday, 9am to 5pm (Florida time). AOG requests come first."
@@ -29,9 +29,11 @@
     "resultsOther": "{count} parts found",
     "add": "Add to quote",
     "added": "In your quote",
-    "empty": "Not in the catalogue? No problem. Add the part number by hand and we will search our supplier network.",
+    "empty": "We search our supplier network in the United States and come back with availability, condition, paperwork and lead time.",
     "emptyAction": "Request a quote for {pn}",
-    "error": "The search failed. Please try again in a moment."
+    "error": "The search failed. Please try again in a moment.",
+    "emptyTitle": "We can quote that part number.",
+    "alsoAsk": "None of these? Request a quote for {pn}"
   },
   "facts": {
     "floridaLabel": "Florida",
@@ -64,13 +66,13 @@
     "searchStep": "Find the part",
     "searchLabel": "Part number or part description",
     "searchPlaceholder": "e.g. LW-12417, spark plug, hydraulic pump",
-    "searchHint": "No need for an exact match: the search finds partial part numbers.",
+    "searchHint": "With dashes, with spaces or all together — we read it the same way.",
     "searching": "Searching...",
     "searchError": "The search failed. Please try again in a moment.",
     "add": "Add",
     "added": "Already in the quote",
-    "notFound": "We could not find that part number in the catalog. No problem: add it anyway and we will search our supplier network.",
-    "addManual": "Add {pn} anyway",
+    "notFound": "We can quote that part number. Add it to the list and we will search our supplier network in the United States.",
+    "addManual": "Add {pn} to the quote",
     "cartStep": "Your quote",
     "cartCount": "{count, plural, =0 {no items} one {1 item} other {# items}}",
     "cartEmpty": "Nothing added yet. Search for a part number above.",
@@ -112,6 +114,7 @@
     "backHome": "Back to home",
     "partsLabel": "Parts",
     "aircraftLabel": "Aircraft",
-    "destinationLabel": "Destination"
+    "destinationLabel": "Destination",
+    "alsoAdd": "None of these? Add {pn}"
   }
 }

@@ -497,9 +497,24 @@ function BuscaPeca({
           </ul>
         ) : null}
 
+        {resultados && resultados.length > 0 && !temItem(limpo) ? (
+          <button
+            type="button"
+            onClick={() => {
+              aoAdicionarManual(limpo);
+              setTermo('');
+            }}
+            className="mt-3 inline-flex items-center gap-1.5 text-sm text-mist-soft underline-offset-4 transition-colors hover:text-tag hover:underline"
+          >
+            <Plus size={14} weight="bold" />
+            {t('alsoAdd', { pn: limpo })}
+          </button>
+        ) : null}
+
         {resultados && resultados.length === 0 ? (
           <div className="rounded-lg border-l-[3px] border-tag bg-tag/10 px-4 py-4">
             <p className="measure text-sm text-mist">{t('notFound')}</p>
+
             <button
               type="button"
               onClick={() => {
