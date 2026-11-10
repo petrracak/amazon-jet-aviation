@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowLeft, ArrowRight, WhatsappLogo } from '@phosphor-icons/react/dist/ssr';
 
 import { Link } from '@/i18n/navigation';
+import { alternativas } from '@/lib/seo';
 import { buscarPost, formatarData, listarPosts, nomeCategoria, renderizar } from '@/lib/blog';
 import { linkWhatsApp } from '@/lib/contact';
 import { getConfig } from '@/lib/settings';
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       images: post.cover_image_url ? [post.cover_image_url] : undefined,
       type: 'article',
     },
+    alternates: alternativas(locale, `/blog/${slug}`),
   };
 }
 

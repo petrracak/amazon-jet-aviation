@@ -5,6 +5,7 @@ import { Package } from '@phosphor-icons/react/dist/ssr';
 import { FormularioCotacao } from '@/components/cotacao/formulario';
 import { getConfig } from '@/lib/settings';
 import { routing } from '@/i18n/routing';
+import { alternativas } from '@/lib/seo';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -17,7 +18,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'quote' });
-  return { title: `${t('title')} | Amazon Jet Aviation`, description: t('lead') };
+  return {
+    title: `${t('title')} | Amazon Jet Aviation`,
+    description: t('lead'),
+    alternates: alternativas(locale, '/cotacao'),
+  };
 }
 
 export default async function QuotePage({

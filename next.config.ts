@@ -35,11 +35,29 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return Object.entries(LEGADO).map(([source, destination]) => ({
-      source,
-      destination,
-      permanent: true,
-    }));
+    return [
+      ...Object.entries(LEGADO).map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })),
+      /*
+        O site também responde no endereço que a Vercel dá por padrão. Dois
+        endereços servindo o mesmo conteúdo é conteúdo duplicado para o
+        buscador, então este manda para o oficial.
+
+        A regra casa o host fixo, não os endereços de cada deploy
+        (amazon-jet-aviation-<hash>.vercel.app), que continuam servindo
+        normalmente — é neles que se confere uma alteração antes de ela
+        virar a produção.
+      */
+      {
+        source: '/:caminho*',
+        has: [{ type: 'host' as const, value: 'amazon-jet-aviation.vercel.app' }],
+        destination: 'https://lp.amazonjetaviation.com/:caminho*',
+        permanent: true,
+      },
+    ];
   },
 };
 

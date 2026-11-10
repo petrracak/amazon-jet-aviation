@@ -9,17 +9,31 @@ import { Pixels } from '@/components/site/pixels';
 import { FloatingActions } from '@/components/site/floating-actions';
 import { linkAog, linkWhatsApp } from '@/lib/contact';
 import { classeFontes } from '@/lib/fonts';
+import { alternativas } from '@/lib/seo';
 import { getConfig } from '@/lib/settings';
 import '../globals.css';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://amazonjetaviation.com',
-  ),
-  title: 'Amazon Jet Aviation | Peças aeronáuticas EUA e Brasil',
-  description:
-    'Sourcing de peças aeronáuticas dos EUA para o Brasil: novas, overhauled, repaired e serviceable. Cotação com documentação clara e AOG com prioridade.',
-};
+/**
+ * Os metadados do site. Deixaram de ser constantes porque o canônico
+ * depende do idioma da vez, e a home não tem `generateMetadata` própria:
+ * é daqui que ela herda o dela.
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lp.amazonjetaviation.com',
+    ),
+    title: 'Amazon Jet Aviation | Peças aeronáuticas EUA e Brasil',
+    description:
+      'Sourcing de peças aeronáuticas dos EUA para o Brasil: novas, overhauled, repaired e serviceable. Cotação com documentação clara e AOG com prioridade.',
+    alternates: alternativas(locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

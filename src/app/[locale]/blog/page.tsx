@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/reveal';
 import { formatarData, listarPosts, nomeCategoria } from '@/lib/blog';
 import { routing } from '@/i18n/routing';
+import { alternativas } from '@/lib/seo';
 
 export const revalidate = 300;
 
@@ -21,7 +22,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  return { title: `${t('title')} | Amazon Jet Aviation`, description: t('description') };
+  return {
+    title: `${t('title')} | Amazon Jet Aviation`,
+    description: t('description'),
+    alternates: alternativas(locale, '/blog'),
+  };
 }
 
 export default async function BlogPage({

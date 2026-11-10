@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { FaqList } from '@/components/faq-list';
 import { routing } from '@/i18n/routing';
+import { alternativas } from '@/lib/seo';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -15,7 +16,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'faq' });
-  return { title: `${t('title')} | Amazon Jet Aviation` };
+  return {
+    title: `${t('title')} | Amazon Jet Aviation`,
+    alternates: alternativas(locale, '/faq'),
+  };
 }
 
 export default async function FaqPage({
