@@ -21,7 +21,8 @@
     "searchHint": "With dashes, with spaces or all together — we read it the same way.",
     "primary": "Request a quote",
     "secondary": "Aircraft on ground? Start AOG",
-    "support": "Monday to Friday, 9am to 5pm (Florida time). AOG requests come first."
+    "support": "Monday to Friday, 9am to 5pm (Florida time). AOG requests come first.",
+    "textMobile": "New, overhauled, repaired and serviceable parts — with clear paperwork and lead time."
   },
   "search": {
     "searching": "Searching parts...",

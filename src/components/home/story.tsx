@@ -82,7 +82,7 @@ export function About() {
         <Reveal className="relative">
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
             <Image
-              src="/fotos/pecas-hangar.jpg"
+              src="/fotos/pecas-hangar.webp"
               alt="Peças aeronáuticas separadas sobre a mesa, ao lado da aeronave no hangar"
               fill
               sizes="(min-width: 1024px) 45vw, 100vw"

@@ -31,7 +31,7 @@ export function Comandante() {
   return (
     <section id="comandante" className="relative isolate overflow-hidden bg-night">
       <Image
-        src="/fotos/volta-ao-mundo-fundo.jpg"
+        src="/fotos/volta-ao-mundo-fundo.webp"
         alt=""
         fill
         sizes="100vw"
@@ -50,7 +50,7 @@ export function Comandante() {
           </Etiqueta>
 
           <Image
-            src="/blog/voltaaomundo.png"
+            src="/blog/voltaaomundo.webp"
             alt="Volta ao Mundo 2026"
             width={520}
             height={180}
@@ -97,7 +97,7 @@ export function Comandante() {
           <div className="glass relative rotate-[1.5deg] rounded-xl p-3 transition-transform duration-500 hover:rotate-0">
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
               <Image
-                src="/fotos/comandante-asa.jpg"
+                src="/fotos/comandante-asa.webp"
                 alt="Comandante Mário Jorge ao lado da asa com a marca da Amazon Jet Aviation"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"

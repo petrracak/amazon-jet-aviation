@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 
 import { identificarPn, type Identificacao } from '@/app/actions/identificar';
-import { createClient } from '@/lib/supabase/client';
 import type { Part } from '@/lib/types';
 
 export type EstadoDaBusca = 'parado' | 'buscando' | 'erro';
@@ -28,10 +27,15 @@ export type EstadoDaBusca = 'parado' | 'buscando' | 'erro';
  * padrão do part number, que diz o que a peça provavelmente é. Ela vem
  * depois e só se o catálogo não respondeu — peça catalogada é informação
  * conferida, e não se troca o certo pelo provável.
+ *
+ * A biblioteca do Supabase entra por import dinâmico, dentro da busca.
+ * Ela pesa, e na home ela só serve a quem digita um part number — a
+ * maioria dos visitantes do celular rolava a página inteira carregando um
+ * cliente de banco de dados que nunca ia usar. Agora ele chega junto com a
+ * primeira tecla, que é quando passa a fazer falta.
  */
 export function useBuscaPecas(termo: string, limite = 8) {
   const locale = useLocale();
-  const supabase = useMemo(() => createClient(), []);
 
   const [resultados, setResultados] = useState<Part[] | null>(null);
   const [estado, setEstado] = useState<EstadoDaBusca>('parado');
@@ -52,7 +56,10 @@ export function useBuscaPecas(termo: string, limite = 8) {
     setEstado('buscando');
 
     const timer = setTimeout(async () => {
-      const { data, error } = await supabase.rpc('buscar_pecas', {
+      const { createClient } = await import('@/lib/supabase/client');
+      if (senha !== pedido.current) return;
+
+      const { data, error } = await createClient().rpc('buscar_pecas', {
         p_termo: consulta,
         p_locale: locale,
         p_limite: limite,
@@ -82,7 +89,7 @@ export function useBuscaPecas(termo: string, limite = 8) {
     }, 260);
 
     return () => clearTimeout(timer);
-  }, [termo, locale, limite, supabase]);
+  }, [termo, locale, limite]);
 
   return { resultados, estado, identificacao, identificando };
 }

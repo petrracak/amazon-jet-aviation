@@ -21,7 +21,8 @@
     "searchHint": "Com traço, com espaço ou tudo junto — a gente entende do mesmo jeito.",
     "primary": "Pedir cotação",
     "secondary": "Aeronave no solo? Acionar AOG",
-    "support": "Atendimento de segunda a sexta, das 9h às 17h (horário da Flórida). Pedidos AOG têm prioridade."
+    "support": "Atendimento de segunda a sexta, das 9h às 17h (horário da Flórida). Pedidos AOG têm prioridade.",
+    "textMobile": "Peças novas, overhauled, repaired e serviceable — com documentação e prazo claros."
   },
   "search": {
     "searching": "Pesquisando peças...",

@@ -54,15 +54,15 @@ export default async function QuotePage({
         className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(60rem_26rem_at_50%_0%,rgb(63_135_245/0.18),transparent_70%)]"
       />
 
-      <div className="relative mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
-        <header className="text-center">
-          <span className="mx-auto grid size-14 place-items-center rounded-xl bg-tag/12 text-tag">
+      <div className="relative mx-auto max-w-3xl px-4 pb-14 pt-9 sm:px-6 sm:py-20">
+        <header className="sm:text-center">
+          <span className="grid size-12 place-items-center rounded-xl bg-tag/12 text-tag sm:mx-auto sm:size-14">
             <Package size={28} weight="duotone" />
           </span>
-          <h1 className="mt-6 font-display text-4xl leading-tight text-white sm:text-5xl">
+          <h1 className="mt-5 font-display text-[1.85rem] leading-tight text-white sm:mt-6 sm:text-5xl">
             {t('title')}
           </h1>
-          <p className="measure mx-auto mt-5 text-base leading-relaxed text-mist-soft sm:text-lg">
+          <p className="measure mt-4 text-base leading-relaxed text-mist-soft sm:mx-auto sm:mt-5 sm:text-lg">
             {t('lead')}
           </p>
         </header>

@@ -110,7 +110,7 @@ export function Documentation() {
         <Reveal atraso={100}>
           <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-[0_30px_80px_-40px_rgb(11_27_43/0.6)]">
             <Image
-              src="/fotos/peca-etiqueta.jpg"
+              src="/fotos/peca-etiqueta.webp"
               alt="Bomba de combustível com a etiqueta de identificação da peça"
               fill
               sizes="(min-width: 1024px) 45vw, 100vw"

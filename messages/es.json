@@ -21,7 +21,8 @@
     "searchHint": "Con guion, con espacio o todo junto — lo entendemos igual.",
     "primary": "Pedir cotización",
     "secondary": "¿Aeronave en tierra? Activar AOG",
-    "support": "Atención de lunes a viernes, de 9 a 17 h (hora de Florida). Los pedidos AOG tienen prioridad."
+    "support": "Atención de lunes a viernes, de 9 a 17 h (hora de Florida). Los pedidos AOG tienen prioridad.",
+    "textMobile": "Piezas nuevas, overhauled, repaired y serviceable — con documentación y plazo claros."
   },
   "search": {
     "searching": "Buscando piezas...",

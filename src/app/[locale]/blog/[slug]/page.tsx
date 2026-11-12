@@ -91,7 +91,7 @@ export default async function PostPage({ params }: { params: Params }) {
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(45rem_28rem_at_25%_0%,rgb(63_135_245/0.16),transparent_65%)]"
           />
-          <div className="relative mx-auto max-w-3xl px-4 pb-12 pt-32 sm:px-6 sm:pt-36">
+          <div className="relative mx-auto max-w-3xl px-4 pb-10 pt-12 sm:px-6 sm:pb-12 sm:pt-36">
             <Link
               href="/blog"
               className="group inline-flex items-center gap-2 text-sm text-mist-soft transition-colors hover:text-white"
@@ -135,7 +135,7 @@ export default async function PostPage({ params }: { params: Params }) {
         ) : null}
 
         <div
-          className="prosa mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-16"
+          className="prosa mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-16"
           dangerouslySetInnerHTML={{ __html: renderizar(post.content) }}
         />
       </article>

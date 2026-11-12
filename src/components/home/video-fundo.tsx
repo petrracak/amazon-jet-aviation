@@ -91,6 +91,9 @@ export function VideoFundo({
     const el = caixa.current;
     if (!el) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // No celular a mídia é uma faixa no fluxo, não fundo de tela cheia:
+    // deslocar o conteúdo dela ali só deixaria a borda à mostra.
+    if (!window.matchMedia('(min-width: 1024px)').matches) return;
 
     let quadro = 0;
     let naTela = true;
@@ -125,7 +128,7 @@ export function VideoFundo({
   }, []);
 
   return (
-    <div ref={caixa} aria-hidden className="absolute inset-x-0 -top-[7%] -z-10 h-[114%] will-change-transform">
+    <div ref={caixa} aria-hidden className="absolute inset-0 -z-10 overflow-hidden lg:-top-[7%] lg:h-[114%] lg:will-change-transform">
       {/*
         Dois pôsteres, um por formato de tela. O quadro do vídeo é 16:9, e
         num celular em pé `object-cover` ampliaria tanto que o avião perderia
@@ -135,7 +138,13 @@ export function VideoFundo({
       */}
       <picture>
         <source media="(max-width: 767px)" srcSet={posterMobile} />
-        <img src={poster} alt="" className="absolute inset-0 size-full object-cover" />
+        <img
+          src={poster}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 size-full object-cover"
+        />
       </picture>
       <video
         ref={video}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   ArrowRight,
@@ -19,7 +19,6 @@ import { enviarCotacao, type ItemCotacao } from '@/app/actions/cotacao';
 import { Link } from '@/i18n/navigation';
 import { PecaIdentificada } from '@/components/peca-identificada';
 import { whatsappUrl } from '@/lib/contact';
-import { createClient } from '@/lib/supabase/client';
 import { useBuscaPecas } from '@/lib/use-busca-pecas';
 import { cn } from '@/lib/utils';
 import type { Part } from '@/lib/types';
@@ -68,7 +67,6 @@ export function FormularioCotacao({
 }) {
   const t = useTranslations('quote');
   const locale = useLocale();
-  const supabase = useMemo(() => createClient(), []);
 
   const [itens, setItens] = useState<ItemCotacao[]>([]);
   const [enviado, setEnviado] = useState<{ ref: string; aog: boolean; href: string } | null>(
@@ -123,7 +121,10 @@ export function FormularioCotacao({
     jaSemeou.current = true;
 
     let cancelado = false;
-    supabase
+    // Mesmo motivo da home: a biblioteca só vale o peso para quem chegou
+    // com um part number na URL.
+    import('@/lib/supabase/client').then(({ createClient }) =>
+      createClient()
       .from('parts')
       .select('id, pn, name, description, manufacturer, category')
       .ilike('pn', pn)
@@ -133,13 +134,14 @@ export function FormularioCotacao({
         const achada = data?.[0] as Part | undefined;
         if (achada) adicionar(achada);
         else adicionarManual(pn);
-      });
+      }),
+    );
 
     return () => {
       cancelado = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pnInicial, supabase]);
+  }, [pnInicial]);
 
   async function enviar(evento: React.FormEvent) {
     evento.preventDefault();

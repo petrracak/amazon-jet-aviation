@@ -64,7 +64,7 @@ function FaqPageContent() {
   const t = useTranslations('faq');
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-24">
+    <div className="mx-auto max-w-3xl px-4 pb-16 pt-10 sm:px-6 sm:pb-24 sm:pt-24">
       <h1 className="font-display text-[clamp(2rem,4vw,2.75rem)] leading-tight">
         {t('title')}
       </h1>

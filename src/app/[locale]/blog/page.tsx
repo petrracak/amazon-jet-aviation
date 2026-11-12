@@ -53,7 +53,7 @@ export default async function BlogPage({
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(45rem_28rem_at_20%_0%,rgb(63_135_245/0.18),transparent_65%)]"
         />
-        <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-32 sm:px-6 sm:pb-16 sm:pt-36">
+        <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 sm:pb-16 sm:pt-36">
           <p className="tag">
             <Newspaper size={15} weight="fill" />
             {t('eyebrow')}
@@ -67,7 +67,7 @@ export default async function BlogPage({
         </div>
       </header>
 
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 sm:py-20">
         {posts.length === 0 ? (
           <p className="text-mist-soft">{t('vazio')}</p>
         ) : (
