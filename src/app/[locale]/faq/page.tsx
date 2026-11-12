@@ -3,7 +3,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { FaqList } from '@/components/faq-list';
 import { routing } from '@/i18n/routing';
-import { alternativas } from '@/lib/seo';
+import { DadosEstruturados } from '@/components/dados-estruturados';
+import { alternativas, compartilhamento } from '@/lib/seo';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -16,9 +17,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'faq' });
+  const titulo = `${t('title')} | Amazon Jet Aviation`;
   return {
-    title: `${t('title')} | Amazon Jet Aviation`,
+    title: titulo,
     alternates: alternativas(locale, '/faq'),
+    ...compartilhamento({ locale, titulo, caminho: '/faq' }),
   };
 }
 
@@ -29,7 +32,32 @@ export default async function FaqPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <FaqPageContent />;
+
+  // As mesmas perguntas da tela, em formato de dado.
+  //
+  // É a peça que mais rende nesta frente: buscador usa para montar o
+  // resultado expansível, e assistente de IA usa como resposta pronta,
+  // com a fonte junto. Pergunta e resposta já escritas pela empresa valem
+  // mais do que qualquer parágrafo de marketing.
+  const t = await getTranslations({ locale, namespace: 'faq' });
+  const itens = t.raw('items') as { q: string; a: string }[];
+
+  const perguntas = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: itens.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  };
+
+  return (
+    <>
+      <DadosEstruturados dados={perguntas} />
+      <FaqPageContent />
+    </>
+  );
 }
 
 function FaqPageContent() {

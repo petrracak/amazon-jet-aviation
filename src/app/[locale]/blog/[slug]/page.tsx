@@ -5,7 +5,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowLeft, ArrowRight, WhatsappLogo } from '@phosphor-icons/react/dist/ssr';
 
 import { Link } from '@/i18n/navigation';
-import { alternativas } from '@/lib/seo';
+import { DadosEstruturados } from '@/components/dados-estruturados';
+import { BASE, alternativas, compartilhamento } from '@/lib/seo';
 import { buscarPost, formatarData, listarPosts, nomeCategoria, renderizar } from '@/lib/blog';
 import { linkWhatsApp } from '@/lib/contact';
 import { getConfig } from '@/lib/settings';
@@ -19,16 +20,21 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const post = await buscarPost(locale, slug);
   if (!post) return {};
 
+  const titulo = post.seo_title ?? `${post.title} | Amazon Jet Aviation`;
+  const descricao = post.seo_description ?? post.excerpt ?? undefined;
+
   return {
-    title: post.seo_title ?? `${post.title} | Amazon Jet Aviation`,
-    description: post.seo_description ?? post.excerpt ?? undefined,
-    openGraph: {
-      title: post.title,
-      description: post.seo_description ?? post.excerpt ?? undefined,
-      images: post.cover_image_url ? [post.cover_image_url] : undefined,
-      type: 'article',
-    },
+    title: titulo,
+    description: descricao,
     alternates: alternativas(locale, `/blog/${slug}`),
+    ...compartilhamento({
+      locale,
+      titulo: post.title,
+      descricao,
+      caminho: `/blog/${slug}`,
+      imagem: post.cover_image_url ?? '/og.jpg',
+      tipo: 'article',
+    }),
   };
 }
 
@@ -47,8 +53,38 @@ export default async function PostPage({ params }: { params: Params }) {
   const outros = (await listarPosts(locale)).filter((p) => p.slug !== post.slug).slice(0, 3);
   const categoria = nomeCategoria(post.categoria, locale);
 
+  
+  // O texto como dado: autoria, datas e imagem. É o que faz um artigo
+  // aparecer como artigo — e não como página solta — para buscador e IA.
+  const artigo = post && {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.seo_description ?? post.excerpt ?? undefined,
+    image: post.cover_image_url ? `${BASE}${post.cover_image_url}` : `${BASE}/og.jpg`,
+    datePublished: post.published_at ?? undefined,
+    dateModified: post.published_at ?? undefined,
+    inLanguage: locale,
+    mainEntityOfPage: alternativas(locale, `/blog/${slug}`).canonical,
+    author: { '@id': `${BASE}/#organizacao` },
+    publisher: { '@id': `${BASE}/#organizacao` },
+  };
+
+  const trilha = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Blog', item: alternativas(locale, '/blog').canonical },
+      { '@type': 'ListItem', position: 2, name: post?.title ?? slug },
+    ],
+  };
+
   return (
-    <div className="bg-night">
+    <>
+      {artigo ? <DadosEstruturados dados={artigo} /> : null}
+      <DadosEstruturados dados={trilha} />
+
+      <div className="bg-night">
       <article>
         <header className="relative overflow-hidden border-b border-night-line">
           <div
@@ -167,6 +203,7 @@ export default async function PostPage({ params }: { params: Params }) {
           </div>
         </section>
       ) : null}
-    </div>
+      </div>
+    </>
   );
 }

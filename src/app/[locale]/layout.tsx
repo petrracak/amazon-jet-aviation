@@ -9,7 +9,8 @@ import { Pixels } from '@/components/site/pixels';
 import { FloatingActions } from '@/components/site/floating-actions';
 import { linkAog, linkWhatsApp } from '@/lib/contact';
 import { classeFontes } from '@/lib/fonts';
-import { alternativas } from '@/lib/seo';
+import { DadosEstruturados } from '@/components/dados-estruturados';
+import { alternativas, compartilhamento, organizacao, website } from '@/lib/seo';
 import { getConfig } from '@/lib/settings';
 import '../globals.css';
 
@@ -24,14 +25,18 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const titulo = 'Amazon Jet Aviation | Peças aeronáuticas EUA e Brasil';
+  const descricao =
+    'Sourcing de peças aeronáuticas dos EUA para o Brasil: novas, overhauled, repaired e serviceable. Cotação com documentação clara e AOG com prioridade.';
+
   return {
     metadataBase: new URL(
       process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lp.amazonjetaviation.com',
     ),
-    title: 'Amazon Jet Aviation | Peças aeronáuticas EUA e Brasil',
-    description:
-      'Sourcing de peças aeronáuticas dos EUA para o Brasil: novas, overhauled, repaired e serviceable. Cotação com documentação clara e AOG com prioridade.',
+    title: titulo,
+    description: descricao,
     alternates: alternativas(locale),
+    ...compartilhamento({ locale, titulo, descricao }),
   };
 }
 
@@ -55,6 +60,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={classeFontes}>
       <body className="flex min-h-screen flex-col">
+        {/* Quem é a empresa e o que é este site, em dados que buscador e
+            assistente de IA conseguem ler sem interpretar texto corrido. */}
+        <DadosEstruturados dados={organizacao(contato)} />
+        <DadosEstruturados dados={website()} />
+
         <NextIntlClientProvider>
           <a
             href="#conteudo"
