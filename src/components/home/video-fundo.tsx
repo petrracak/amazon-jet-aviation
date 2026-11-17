@@ -11,11 +11,12 @@ import { cn } from '@/lib/utils';
  * desenha a dobra inteira. O vídeo chega por cima depois, e só quando
  * chega é que aparece — nunca há retângulo preto esperando.
  *
- * E ele nem sempre chega, de propósito:
+ * Cada formato de tela recebe o seu arquivo: 1,3 MB em 720p no computador,
+ * 610 KB em 540p no celular, onde a faixa é pequena e a rede costuma ser
+ * móvel. E no celular ele só começa a baixar depois que a página carregou.
  *
- * - No celular não baixa. São 1,3 MB em rede móvel para um fundo que fica
- *   atrás de um véu escuro, e autoplay em celular falha com frequência.
- *   O pôster entrega a mesma dobra sem o custo.
+ * Em dois casos ele não chega:
+ *
  * - Com `prefers-reduced-motion` não baixa. Quem pediu menos movimento no
  *   sistema não quer um avião atravessando a tela em loop.
  * - Com `saveData` ligado no navegador não baixa. É o visitante dizendo
@@ -29,10 +30,12 @@ export function VideoFundo({
   poster,
   posterMobile,
   src,
+  srcMobile,
 }: {
   poster: string;
   posterMobile: string;
   src: string;
+  srcMobile: string;
 }) {
   const caixa = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
@@ -53,29 +56,73 @@ export function VideoFundo({
         });
     };
 
-    // A decisão é reavaliada quando a condição muda, não só na montagem:
-    // quem abre a janela estreita e depois maximiza, ou gira o tablet,
-    // passa a merecer o vídeo e precisa recebê-lo.
+    const carregar = (fonte: string) => {
+      el.addEventListener('canplay', aoPoder, { once: true });
+      el.src = fonte;
+      el.load();
+    };
+
+    const desligar = () => {
+      el.pause();
+      el.removeAttribute('src');
+      el.load();
+      setTocando(false);
+    };
+
+    /**
+     * No celular o vídeo espera a página terminar de carregar e o
+     * navegador ficar ocioso.
+     *
+     * São 610 KB competindo, numa rede móvel, com o que desenha a primeira
+     * tela. Esperando, o pôster pinta na hora e o vídeo entra um segundo
+     * depois, sem que ninguém perceba a espera — e sem atrasar o que o
+     * visitante veio ler.
+     */
+    const quandoOcioso = (acao: () => void) => {
+      const agendar = () => {
+        // Safari só ganhou requestIdleCallback recentemente; onde não
+        // existir, um atraso fixo cumpre o mesmo papel.
+        const ocioso = (
+          window as Window & {
+            requestIdleCallback?: (cb: () => void, opcoes?: { timeout: number }) => number;
+          }
+        ).requestIdleCallback;
+
+        if (ocioso) ocioso(acao, { timeout: 2500 });
+        else window.setTimeout(acao, 1200);
+      };
+
+      if (document.readyState === 'complete') agendar();
+      else window.addEventListener('load', agendar, { once: true });
+    };
+
+    let fonteAtual = '';
+
     const decidir = () => {
       const conexao = (navigator as { connection?: { saveData?: boolean } }).connection;
-      const pode = !pequena.matches && !parado.matches && conexao?.saveData !== true;
 
-      if (pode && !el.src) {
-        el.addEventListener('canplay', aoPoder, { once: true });
-        el.src = src;
-        el.load();
+      // Quem pediu menos movimento no sistema não quer um avião em loop; e
+      // saveData ligado é o visitante dizendo que está contando megabytes.
+      if (parado.matches || conexao?.saveData === true) {
+        if (fonteAtual) {
+          fonteAtual = '';
+          desligar();
+        }
         return;
       }
 
-      // Deixou de valer a pena: para o vídeo e devolve a dobra ao pôster.
-      if (!pode && el.src) {
-        el.pause();
-        el.removeAttribute('src');
-        el.load();
-        setTocando(false);
-      }
+      const noCelular = pequena.matches;
+      const desejada = noCelular ? srcMobile : src;
+      if (desejada === fonteAtual) return;
+
+      fonteAtual = desejada;
+      if (noCelular) quandoOcioso(() => fonteAtual === desejada && carregar(desejada));
+      else carregar(desejada);
     };
 
+    // A decisão é reavaliada quando a condição muda, não só na montagem:
+    // quem abre a janela estreita e depois maximiza, ou gira o tablet,
+    // passa a merecer o arquivo maior e precisa recebê-lo.
     decidir();
     pequena.addEventListener('change', decidir);
     parado.addEventListener('change', decidir);
@@ -85,7 +132,7 @@ export function VideoFundo({
       parado.removeEventListener('change', decidir);
       el.removeEventListener('canplay', aoPoder);
     };
-  }, [src]);
+  }, [src, srcMobile]);
 
   useEffect(() => {
     const el = caixa.current;

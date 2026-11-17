@@ -59,6 +59,7 @@ export function Hero({ aogHref }: { aogHref: string }) {
           poster="/hero/voo.webp"
           posterMobile="/hero/voo-mobile.webp"
           src="/hero/voo.mp4"
+          srcMobile="/hero/voo-mobile.mp4"
         />
 
         {/*
