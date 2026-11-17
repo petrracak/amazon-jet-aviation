@@ -20,6 +20,11 @@ import { useEffect, useRef } from 'react';
  *
  * Quem pediu menos movimento no sistema recebe o brilho parado no centro:
  * o clima permanece, a perseguição não.
+ *
+ * A calibragem é deliberadamente fraca. O efeito é para ser notado de
+ * canto de olho, como a luz do fundo reagindo à mão — não como uma lanterna
+ * acesa sobre a imagem. Núcleo baixo, queda longa e desfoque largo fazem o
+ * brilho não ter borda visível em lugar nenhum.
  */
 export function BrilhoCursor() {
   const brilho = useRef<HTMLDivElement>(null);
@@ -48,7 +53,7 @@ export function BrilhoCursor() {
 
     if (parado) {
       desenhar();
-      el.style.opacity = '0.75';
+      el.style.opacity = '0.6';
       return;
     }
 
@@ -66,8 +71,8 @@ export function BrilhoCursor() {
 
       // Aproximação por fração constante: rápido quando está longe,
       // suave ao chegar.
-      x += (alvoX - x) * 0.07;
-      y += (alvoY - y) * 0.07;
+      x += (alvoX - x) * 0.055;
+      y += (alvoY - y) * 0.055;
       desenhar();
 
       quadro = requestAnimationFrame(laco);
@@ -88,7 +93,7 @@ export function BrilhoCursor() {
       caixa = medida();
     };
 
-    el.style.opacity = temPonteiro ? '0' : '0.8';
+    el.style.opacity = temPonteiro ? '0' : '0.7';
     quadro = requestAnimationFrame(laco);
 
     if (temPonteiro) {
@@ -113,9 +118,9 @@ export function BrilhoCursor() {
       className="pointer-events-none absolute left-0 top-0 z-0 size-[34rem] rounded-full opacity-0 mix-blend-screen transition-opacity duration-700 will-change-transform"
       style={{
         background:
-          'radial-gradient(circle, rgb(63 135 245 / 0.55) 0%, rgb(96 160 250 / 0.22) 34%,' +
-          ' rgb(63 135 245 / 0) 66%)',
-        filter: 'blur(18px)',
+          'radial-gradient(circle, rgb(96 160 250 / 0.22) 0%, rgb(63 135 245 / 0.09) 42%,' +
+          ' rgb(63 135 245 / 0) 74%)',
+        filter: 'blur(40px)',
       }}
     />
   );
