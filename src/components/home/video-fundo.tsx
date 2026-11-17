@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils';
  *
  * Cada formato de tela recebe o seu arquivo: 1,3 MB em 720p no computador,
  * 610 KB em 540p no celular, onde a faixa é pequena e a rede costuma ser
- * móvel. E no celular ele só começa a baixar depois que a página carregou.
+ * móvel. E no celular ele espera o primeiro sinal de interesse.
  *
  * Em dois casos ele não chega:
  *
@@ -70,33 +70,43 @@ export function VideoFundo({
     };
 
     /**
-     * No celular o vídeo espera a página terminar de carregar e o
-     * navegador ficar ocioso.
+     * No celular o vídeo espera o visitante dar sinal de vida.
      *
-     * São 610 KB competindo, numa rede móvel, com o que desenha a primeira
-     * tela. Esperando, o pôster pinta na hora e o vídeo entra um segundo
-     * depois, sem que ninguém perceba a espera — e sem atrasar o que o
-     * visitante veio ler.
+     * São 610 KB numa rede que costuma ser móvel. Baixá-los junto com a
+     * página atrasa o que a pessoa veio ler — medido, custava onze pontos
+     * de PageSpeed e um segundo inteiro de LCP.
+     *
+     * Então o gatilho é o primeiro toque, a primeira rolagem ou a primeira
+     * tecla. Quem está lendo a primeira tela parado já vê o pôster, que é
+     * o mesmo quadro; quem se mexe demonstrou interesse, e aí vale gastar
+     * os megabytes. Há ainda um prazo de seis segundos para quem fica
+     * olhando sem tocar em nada.
      */
-    const quandoOcioso = (acao: () => void) => {
-      const agendar = () => {
-        // Safari só ganhou requestIdleCallback recentemente; onde não
-        // existir, um atraso fixo cumpre o mesmo papel.
-        const ocioso = (
-          window as Window & {
-            requestIdleCallback?: (cb: () => void, opcoes?: { timeout: number }) => number;
-          }
-        ).requestIdleCallback;
+    const aoPrimeiroSinal = (acao: () => void) => {
+      let feito = false;
+      const sinais = ['pointerdown', 'touchstart', 'scroll', 'keydown', 'wheel'] as const;
 
-        if (ocioso) ocioso(acao, { timeout: 2500 });
-        else window.setTimeout(acao, 1200);
+      const disparar = () => {
+        if (feito) return;
+        feito = true;
+        for (const s of sinais) window.removeEventListener(s, disparar);
+        window.clearTimeout(prazo);
+        acao();
       };
 
-      if (document.readyState === 'complete') agendar();
-      else window.addEventListener('load', agendar, { once: true });
+      const prazo = window.setTimeout(disparar, 6000);
+      for (const s of sinais) {
+        window.addEventListener(s, disparar, { once: true, passive: true });
+      }
+
+      return () => {
+        for (const s of sinais) window.removeEventListener(s, disparar);
+        window.clearTimeout(prazo);
+      };
     };
 
     let fonteAtual = '';
+    let cancelarEspera: (() => void) | undefined;
 
     const decidir = () => {
       const conexao = (navigator as { connection?: { saveData?: boolean } }).connection;
@@ -116,8 +126,16 @@ export function VideoFundo({
       if (desejada === fonteAtual) return;
 
       fonteAtual = desejada;
-      if (noCelular) quandoOcioso(() => fonteAtual === desejada && carregar(desejada));
-      else carregar(desejada);
+
+      if (!noCelular) {
+        carregar(desejada);
+        return;
+      }
+
+      cancelarEspera?.();
+      cancelarEspera = aoPrimeiroSinal(() => {
+        if (fonteAtual === desejada) carregar(desejada);
+      });
     };
 
     // A decisão é reavaliada quando a condição muda, não só na montagem:
@@ -128,6 +146,7 @@ export function VideoFundo({
     parado.addEventListener('change', decidir);
 
     return () => {
+      cancelarEspera?.();
       pequena.removeEventListener('change', decidir);
       parado.removeEventListener('change', decidir);
       el.removeEventListener('canplay', aoPoder);
